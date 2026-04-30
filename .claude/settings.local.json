@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell(Get-ChildItem -Path \"C:\\\\xampp\\\\htdocs\\\\flexbase\\\\wp-content\\\\themes\\\\flexbase\" -Recurse | ForEach-Object { $_.FullName.Replace\\(\"C:\\\\xampp\\\\htdocs\\\\flexbase\\\\wp-content\\\\themes\\\\flexbase\", \"\"\\) })"
-    ]
-  }
-}
