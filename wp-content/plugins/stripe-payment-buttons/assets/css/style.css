@@ -1,0 +1,271 @@
+.stripe-pb-wrap {
+	max-width: 480px;
+	margin: 0 auto;
+	padding: 32px 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	--stripe-pb-color: #6366f1;
+}
+
+/* ── Radio options ── */
+
+.stripe-pb-options {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.stripe-pb-wrap.is-horizontal .stripe-pb-options {
+	flex-direction: row;
+}
+
+.stripe-pb-option {
+	flex: 1;
+	cursor: pointer;
+	position: relative;
+}
+
+.stripe-pb-option input[type="radio"] {
+	position: absolute;
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.stripe-pb-option-label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 12px 10px;
+	border: 2px solid #e5e7eb;
+	border-radius: 10px;
+	background: #fff;
+	box-sizing: border-box;
+	transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+	white-space: nowrap;
+}
+
+.stripe-pb-option-label::before {
+	content: '';
+	width: 16px;
+	height: 16px;
+	min-width: 16px;
+	border-radius: 50%;
+	border: 2px solid #d1d5db;
+	transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.stripe-pb-option:hover .stripe-pb-option-label {
+	border-color: var(--stripe-pb-color);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.stripe-pb-option input[type="radio"]:focus-visible ~ .stripe-pb-option-label {
+	outline: 2px solid var(--stripe-pb-color);
+	outline-offset: 2px;
+}
+
+.stripe-pb-option input[type="radio"]:checked ~ .stripe-pb-option-label {
+	border-color: var(--stripe-pb-color);
+	background: #f5f3ff;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.stripe-pb-option input[type="radio"]:checked ~ .stripe-pb-option-label::before {
+	border-color: var(--stripe-pb-color);
+	background: var(--stripe-pb-color);
+	box-shadow: inset 0 0 0 3px #f5f3ff;
+}
+
+.stripe-pb-option-title {
+	font-size: 14px;
+	font-weight: 600;
+	color: #111827;
+}
+
+/* ── Main button ── */
+
+.stripe-pb-btn {
+	display: block;
+	width: 100%;
+	padding: 15px;
+	background: var(--stripe-pb-color);
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-family: inherit;
+	transition: filter 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.stripe-pb-btn:hover {
+	filter: brightness(0.9);
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+}
+
+.stripe-pb-btn:active {
+	transform: translateY(0);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.stripe-pb-btn:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 3px;
+}
+
+.stripe-pb-btn:disabled,
+.stripe-pb-btn:disabled:hover {
+	opacity: 0.7;
+	cursor: not-allowed;
+	transform: none;
+	filter: none;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Portal button ── */
+
+.stripe-pb-portal-btn {
+	display: block;
+	width: 100%;
+	margin-top: 10px;
+	padding: 12px 15px;
+	background: transparent;
+	color: var(--stripe-pb-color);
+	font-size: 14px;
+	font-weight: 600;
+	border: 2px solid var(--stripe-pb-color);
+	border-radius: 10px;
+	cursor: pointer;
+	font-family: inherit;
+	text-align: center;
+	text-decoration: none;
+	box-sizing: border-box;
+	transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.stripe-pb-portal-btn:visited {
+	color: var(--stripe-pb-color);
+}
+
+.stripe-pb-portal-btn:hover,
+.stripe-pb-portal-btn:visited:hover {
+	background: var(--stripe-pb-color);
+	color: #fff;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+}
+
+.stripe-pb-portal-btn:focus-visible {
+	outline: 2px solid var(--stripe-pb-color);
+	outline-offset: 3px;
+}
+
+/* ── Amount input ── */
+
+.stripe-pb-amount {
+	display: none;
+	margin-bottom: 14px;
+}
+
+.stripe-pb-amount-row {
+	display: flex;
+	align-items: center;
+	border: 2px solid #e5e7eb;
+	border-radius: 10px;
+	background: #fff;
+	overflow: hidden;
+	transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.stripe-pb-amount-row:focus-within {
+	border-color: var(--stripe-pb-color);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.stripe-pb-currency {
+	padding: 12px 8px 12px 14px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #6b7280;
+	user-select: none;
+}
+
+.stripe-pb-amount-input {
+	flex: 1;
+	border: none;
+	outline: none;
+	padding: 12px 14px 12px 4px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #111827;
+	font-family: inherit;
+	background: transparent;
+	min-width: 0;
+	-moz-appearance: textfield;
+}
+
+.stripe-pb-amount-input::-webkit-outer-spin-button,
+.stripe-pb-amount-input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* ── Message / Error ── */
+
+.stripe-pb-msg {
+	margin: 8px 0 0;
+	font-size: 13px;
+	min-height: 18px;
+}
+
+/* ── Thank You page ── */
+
+.stripe-pb-thank-you {
+	max-width: 480px;
+	margin: 40px auto;
+	padding: 48px 32px;
+	text-align: center;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	background: #fff;
+	border-radius: 16px;
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.stripe-pb-thank-you-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 64px;
+	height: 64px;
+	margin-bottom: 24px;
+	background: #ecfdf5;
+	color: #059669;
+	font-size: 32px;
+	border-radius: 50%;
+}
+
+.stripe-pb-thank-you-title {
+	margin: 0 0 12px;
+	font-size: 24px;
+	font-weight: 700;
+	color: #111827;
+}
+
+.stripe-pb-thank-you-msg {
+	margin: 0;
+	font-size: 16px;
+	color: #6b7280;
+	line-height: 1.6;
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 480px) {
+	.stripe-pb-wrap.is-horizontal .stripe-pb-options {
+		flex-direction: column;
+	}
+}
