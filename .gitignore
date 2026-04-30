@@ -1,0 +1,50 @@
+WordPress core
+# WordPress core — nikad ne commituj
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/xmlrpc.php
+/license.txt
+/readme.html
+Uploads i mediji
+# Uploads — čuvaj strukturu, ne fajlove
+/wp-content/uploads/
+/wp-content/blogs.dir/
+/wp-content/upgrade/
+Plugins i teme (core)
+# Sve plugin-e iz repo-a (instaliraj ih posebno)
+/wp-content/plugins/
+
+# Sve teme OSIM tvoje custom teme
+/wp-content/themes/*
+!/wp-content/themes/moja-tema/
+
+# Default teme
+/wp-content/themes/twenty*/
+Konfiguracija i env
+# Nikad ne commituj lozinke!
+wp-config.php
+wp-config-local.php
+.env
+.env.*
+Cache i logs
+/wp-content/cache/
+/wp-content/wflogs/
+*.log
+debug.log
+OS i editor fajlovi
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+Node / build alati
+node_modules/
+/wp-content/themes/moja-tema/node_modules/
+*.map
+dist/
+
+.claude
+CLAUDE.md
