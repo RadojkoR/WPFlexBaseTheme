@@ -1,6 +1,6 @@
 /* FlexBase — main.css */
 
-/* ── Reset ──────────────────────────────────────────────────────────────────── */
+/* ── Reset ─────────────────────────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -9,23 +9,26 @@
 	padding: 0;
 }
 
-/* ── Body ───────────────────────────────────────────────────────────────────── */
+/* ── Body ──────────────────────────────────────────────────────────────────── */
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 	font-size: 1rem;
 	line-height: 1.6;
-	color: #1e1e2e;
-	background-color: #ffffff;
+	color: var(--flexbase-color-text, #1e1e2e);
+	background-color: var(--flexbase-color-background, #ffffff);
 	-webkit-font-smoothing: antialiased;
 }
 
 /* ── Media ──────────────────────────────────────────────────────────────────── */
 img,
-video,
-svg {
+video {
 	max-width: 100%;
 	height: auto;
 	display: block;
+}
+
+svg {
+	max-width: 100%;
 }
 
 /* ── Links ──────────────────────────────────────────────────────────────────── */
@@ -44,9 +47,57 @@ ol {
 	list-style: none;
 }
 
-/* ── Main content ───────────────────────────────────────────────────────────── */
+/* ── FLEXBASE LAYOUT SYSTEM ────────────────────────────────────────────────── */
+
+/* Base wrapper (optional global structure) */
 .flexbase-main {
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 2rem 1rem;
+	width: 100%;
+}
+
+#flexbase-header-spacer {
+	background: transparent;
+}
+
+/* Container system (core) */
+.container {
+	width: 100%;
+	max-width: var(--flexbase-container-width, 1200px);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+/* ── Layout modes (boxed / full) ───────────────────────────────────────────── */
+
+/* BOXED layout (default) */
+body.layout-boxed .container {
+	max-width: var(--flexbase-container-width, 1200px);
+}
+
+/* FULL WIDTH layout */
+body.layout-full .container {
+	max-width: 100%;
+}
+
+/* ── Full width sections (headers, heroes, Elementor sections) ────────────── */
+
+/* Header / hero always full width */
+.header,
+.hero {
+	width: 100%;
+}
+
+/* Elementor support — full width sections */
+.elementor-section.elementor-section-boxed > .elementor-container {
+	max-width: var(--flexbase-container-width, 1200px);
+}
+
+body.layout-full .elementor-section.elementor-section-boxed > .elementor-container {
+	max-width: 100%;
+}
+
+/* Elementor full width section override */
+.elementor-section.elementor-section-full_width {
+	width: 100%;
 }

@@ -1,0 +1,92 @@
+/* FlexBase — sticky.css */
+
+/* ── Sticky wrapper ──────────────────────────────────────────────────────────── */
+.flexbase-header-wrap--sticky {
+	position: fixed;
+	top: 0; /* overridden by sticky.js when topbar is visible */
+	left: 0;
+	width: 100%;
+	z-index: 10000; /* above mobile menu overlay (9999) and backdrop (9998) */
+	transition: transform 0.3s ease;
+}
+
+/* scroll_up: slide out of viewport when scrolling down */
+.flexbase-header-wrap--sticky.is-hidden {
+	transform: translateY(-100%);
+}
+
+/* Box shadow: subtle depth when scrolled (all sticky modes) */
+.flexbase-header-wrap--sticky .flexbase-header {
+	transition: box-shadow 0.3s ease;
+}
+
+.flexbase-header-wrap--sticky.is-scrolled .flexbase-header {
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Transparent mode ────────────────────────────────────────────────────────── */
+
+/* Transparent mode always requires fixed positioning (same as --sticky). */
+.flexbase-header-wrap--transparent {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10000;
+	transition: transform 0.3s ease;
+}
+
+.flexbase-header-wrap--transparent .flexbase-header {
+	background-color: transparent;
+	border-bottom-color: transparent;
+	transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flexbase-header-wrap--transparent .flexbase-header__site-name,
+.flexbase-header-wrap--transparent .flexbase-header__nav .flexbase-nav__menu li a {
+	color: var(--flexbase-transp-text, #ffffff);
+	transition: color 0.3s ease;
+}
+
+.flexbase-header-wrap--transparent .flexbase-header__nav .flexbase-nav__menu li.current-menu-item > a,
+.flexbase-header-wrap--transparent .flexbase-header__nav .flexbase-nav__menu li.current_page_item > a {
+	color: var(--flexbase-transp-active, #ffffff);
+}
+
+.flexbase-header-wrap--transparent .flexbase-header__hamburger-bar {
+	background-color: var(--flexbase-transp-text, #ffffff);
+	transition: background-color 0.3s ease, transform 0.25s ease, opacity 0.25s ease;
+}
+
+.flexbase-header-wrap--transparent .flexbase-header__nav .flexbase-nav__menu li a:hover {
+	background-color: rgba(255, 255, 255, 0.15);
+	color: var(--flexbase-transp-hover, #ffffff);
+}
+
+.flexbase-header-wrap--transparent .flexbase-header__hamburger:hover {
+	background-color: rgba(255, 255, 255, 0.15);
+}
+
+.flexbase-header-wrap--transparent.is-scrolled .flexbase-header {
+	background-color: var(--flexbase-header-bg, #ffffff);
+	border-bottom-color: #e5e7eb;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.flexbase-header-wrap--transparent.is-scrolled .flexbase-header__site-name,
+.flexbase-header-wrap--transparent.is-scrolled .flexbase-header__nav .flexbase-nav__menu li a {
+	color: var(--flexbase-header-text, #1e1e2e);
+}
+
+.flexbase-header-wrap--transparent.is-scrolled .flexbase-header__nav .flexbase-nav__menu li a:hover {
+	color: var(--flexbase-nav-hover, var(--flexbase-color-primary, #6366f1));
+}
+
+.flexbase-header-wrap--transparent.is-scrolled .flexbase-header__nav .flexbase-nav__menu li.current-menu-item > a,
+.flexbase-header-wrap--transparent.is-scrolled .flexbase-header__nav .flexbase-nav__menu li.current_page_item > a {
+	color: var(--flexbase-nav-active, var(--flexbase-color-primary, #6366f1));
+}
+
+.flexbase-header-wrap--transparent.is-scrolled .flexbase-header__hamburger-bar {
+	background-color: var(--flexbase-header-text, #1e1e2e);
+}

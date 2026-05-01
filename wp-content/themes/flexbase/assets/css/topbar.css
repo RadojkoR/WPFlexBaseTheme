@@ -1,0 +1,187 @@
+/* FlexBase — topbar.css */
+
+/* ── Shell ───────────────────────────────────────────────────────────────────── */
+.flexbase-topbar {
+	position: relative;
+	z-index: 200; /* above header */
+	font-size: 0.8125rem; /* 13px */
+	line-height: 1.4;
+}
+
+.flexbase-topbar__inner {
+	display: flex;
+	align-items: center;
+	max-width: var(--flexbase-container-width, 1200px);
+	margin: 0 auto;
+	padding: 0 1rem;
+	min-height: 38px;
+	gap: 1rem;
+}
+
+/* ── Three columns ───────────────────────────────────────────────────────────── */
+.flexbase-topbar__col {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	min-width: 0; /* allow text truncation */
+}
+
+.flexbase-topbar__col--left {
+	justify-content: flex-start;
+}
+
+.flexbase-topbar__col--center {
+	justify-content: center;
+}
+
+.flexbase-topbar__col--right {
+	justify-content: flex-end;
+}
+
+/* ── Links (email / phone) ───────────────────────────────────────────────────── */
+.flexbase-topbar__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.375rem;
+	color: var(--topbar-link-color, #a5b4fc);
+	text-decoration: none;
+	white-space: nowrap;
+	transition: opacity 0.15s ease;
+}
+
+.flexbase-topbar__link:hover {
+	opacity: 0.8;
+	text-decoration: none;
+}
+
+.flexbase-topbar__link svg {
+	flex-shrink: 0;
+}
+
+/* ── Custom text ─────────────────────────────────────────────────────────────── */
+.flexbase-topbar__text {
+	color: inherit;
+}
+
+.flexbase-topbar__text a {
+	color: var(--topbar-link-color, #a5b4fc);
+	text-decoration: none;
+	transition: opacity 0.15s ease;
+}
+
+.flexbase-topbar__text a:hover {
+	opacity: 0.8;
+}
+
+/* ── Social icons ────────────────────────────────────────────────────────────── */
+.flexbase-topbar__social {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.flexbase-topbar__social li a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	color: var(--topbar-link-color, #a5b4fc);
+	border-radius: 4px;
+	text-decoration: none;
+	transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.flexbase-topbar__social li a:hover {
+	opacity: 0.8;
+	background-color: rgba(255, 255, 255, 0.08);
+}
+
+.flexbase-topbar__social li a svg,
+.flexbase-topbar__social li a i {
+	display: block;
+	flex-shrink: 0;
+	font-size: 0.875rem;
+	line-height: 1;
+}
+
+/* ── Email + Phone combined ──────────────────────────────────────────────────── */
+.flexbase-topbar__contact {
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+	flex-wrap: wrap;
+}
+
+/* ── Close (dismiss) button ──────────────────────────────────────────────────── */
+.flexbase-topbar__close {
+	position: absolute;
+	right: 0.75rem;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	background: none;
+	border: none;
+	border-radius: 4px;
+	color: inherit;
+	opacity: 0.6;
+	cursor: pointer;
+	transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.flexbase-topbar__close:hover {
+	opacity: 1;
+	background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Add right padding to inner when dismiss button is present so content doesn't overlap */
+.flexbase-topbar--dismissible .flexbase-topbar__inner {
+	padding-right: 2.5rem;
+}
+
+/* ── Dismiss animation ───────────────────────────────────────────────────────── */
+.flexbase-topbar--dismissible {
+	overflow: hidden;
+	max-height: 120px; /* generous ceiling for transition */
+	transition: max-height 0.35s ease, opacity 0.25s ease, padding 0.35s ease;
+}
+
+.flexbase-topbar--dismissed {
+	max-height: 0 !important;
+	opacity: 0;
+	pointer-events: none;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+
+/* Hide on mobile modifier (set via Customizer) */
+@media (max-width: 768px) {
+	.flexbase-topbar--hide-mobile {
+		display: none;
+	}
+}
+
+/*
+ * On small screens without hide-mobile: collapse left/right text/email/phone
+ * columns and keep only the center column. Social-icon columns stay visible
+ * (each column gets a `--<type>` modifier from inc/topbar.php).
+ */
+@media (max-width: 600px) {
+	.flexbase-topbar__col--left:not(.flexbase-topbar__col--social_icons),
+	.flexbase-topbar__col--right:not(.flexbase-topbar__col--social_icons) {
+		display: none;
+	}
+
+	.flexbase-topbar__col--center {
+		flex: 1;
+		justify-content: center;
+	}
+}

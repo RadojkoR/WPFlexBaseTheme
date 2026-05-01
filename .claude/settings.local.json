@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "PowerShell(Get-ChildItem -Path \"C:\\\\xampp\\\\htdocs\\\\flexbase\\\\wp-content\\\\themes\\\\flexbase\" -Recurse | ForEach-Object { $_.FullName.Replace\\(\"C:\\\\xampp\\\\htdocs\\\\flexbase\\\\wp-content\\\\themes\\\\flexbase\", \"\"\\) })"
+      "PowerShell(Get-ChildItem -Path \"C:\\\\xampp\\\\htdocs\\\\flexbase\\\\wp-content\\\\themes\\\\flexbase\" -Recurse | ForEach-Object { $_.FullName.Replace\\(\"C:\\\\xampp\\\\htdocs\\\\flexbase\\\\wp-content\\\\themes\\\\flexbase\", \"\"\\) })",
+      "Bash(php -l wp-content/themes/flexbase/inc/admin-settings.php)",
+      "Bash(php -l wp-content/themes/flexbase/inc/customizer.php)",
+      "Bash(php -l wp-content/themes/flexbase/inc/css-vars.php)",
+      "Bash(php -l wp-content/themes/flexbase/inc/topbar.php)",
+      "Bash(php -l wp-content/themes/flexbase/inc/fonts.php)",
+      "Bash(cd /d C:\\\\xampp\\\\htdocs\\\\flexbase)",
+      "Bash(php -r \"echo 'Settings check: '; var_dump\\(defined\\('ABSPATH'\\)\\);\")"
     ]
   }
 }
