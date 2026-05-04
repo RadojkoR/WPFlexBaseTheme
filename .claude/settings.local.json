@@ -8,7 +8,8 @@
       "Bash(php -l wp-content/themes/flexbase/inc/topbar.php)",
       "Bash(php -l wp-content/themes/flexbase/inc/fonts.php)",
       "Bash(cd /d C:\\\\xampp\\\\htdocs\\\\flexbase)",
-      "Bash(php -r \"echo 'Settings check: '; var_dump\\(defined\\('ABSPATH'\\)\\);\")"
+      "Bash(php -r \"echo 'Settings check: '; var_dump\\(defined\\('ABSPATH'\\)\\);\")",
+      "Bash(netstat -ano)"
     ]
   }
 }

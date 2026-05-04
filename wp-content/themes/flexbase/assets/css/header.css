@@ -129,7 +129,7 @@
 .flexbase-header__actions .flexbase-header__action-button--login {
 	background-color: var(--login-bg, #6366f1);
 	color: var(--login-text, #ffffff);
-	border: var(--login-border-width, 0) solid var(--login-border-color, #6366f1);
+	border: var(--login-bd-size, 0) solid var(--login-border-color, #6366f1);
 	border-radius: var(--login-border-radius, 6px);
 	width: var(--login-width, auto);
 	height: var(--login-height, auto);
@@ -140,7 +140,7 @@
 .flexbase-header__actions .flexbase-header__action-button--login:focus {
 	background-color: var(--login-hover-bg, #4f46e5);
 	color: var(--login-hover-text, #ffffff);
-	border: var(--login-border-width, 0) solid var(--login-hover-border, #4f46e5);
+	border: var(--login-bd-size, 0) solid var(--login-hover-border, #4f46e5);
 	opacity: 1;
 }
 
@@ -148,7 +148,7 @@
 .flexbase-header__actions .flexbase-header__action-button--signup {
 	background-color: var(--signup-bg, #8b5cf6);
 	color: var(--signup-text, #ffffff);
-	border: var(--signup-border-width, 0) solid var(--signup-border-color, #8b5cf6);
+	border: var(--signup-bd-size, 0) solid var(--signup-border-color, #8b5cf6);
 	border-radius: var(--signup-border-radius, 6px);
 	width: var(--signup-width, auto);
 	height: var(--signup-height, auto);
@@ -159,7 +159,7 @@
 .flexbase-header__actions .flexbase-header__action-button--signup:focus {
 	background-color: var(--signup-hover-bg, #7c3aed);
 	color: var(--signup-hover-text, #ffffff);
-	border: var(--signup-border-width, 0) solid var(--signup-hover-border, #7c3aed);
+	border: var(--signup-bd-size, 0) solid var(--signup-hover-border, #7c3aed);
 	opacity: 1;
 }
 
@@ -217,36 +217,76 @@
 	transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-/* Animate bars → X when open */
-.flexbase-header__hamburger.is-active .flexbase-header__hamburger-bar:nth-child(1) {
-	transform: translateY(7px) rotate(45deg);
+/* ── Mobile off-canvas close button ─────────────────────────────────────────── */
+
+/*
+ * Separate close button rendered inside the panel but positioned fixed
+ * at top-right of the viewport (z-index 10003, above the panel at 10001).
+ * Hidden until the menu is open; shown by JS via .is-visible.
+ */
+.flexbase-header__mobile-close {
+	display: none;
+	position: fixed;
+	top: 1rem;
+	right: 1rem;
+	z-index: 10003;
+	width: 40px;
+	height: 40px;
+	align-items: center;
+	justify-content: center;
+	background: var(--mobile-close-bg, #ffffff);
+	border: var(--mobile-close-bd-size, 1px) solid var(--mobile-close-border, #e5e7eb);
+	border-radius: var(--mobile-close-border-radius, 8px);
+	cursor: pointer;
+	padding: 0;
+	flex-shrink: 0;
+	transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
-.flexbase-header__hamburger.is-active .flexbase-header__hamburger-bar:nth-child(2) {
-	opacity: 0;
-	transform: scaleX(0);
+.flexbase-header__mobile-close.is-visible {
+	display: flex;
 }
 
-.flexbase-header__hamburger.is-active .flexbase-header__hamburger-bar:nth-child(3) {
-	transform: translateY(-7px) rotate(-45deg);
+.flexbase-header__mobile-close:hover {
+	background-color: #f3f4f6;
+	border-color: #d1d5db;
+}
+
+.flexbase-header__mobile-close-bar {
+	position: absolute;
+	display: block;
+	width: 18px;
+	height: 2px;
+	background-color: var(--mobile-close-icon, #1e1e2e);
+	border-radius: 2px;
+}
+
+.flexbase-header__mobile-close-bar:nth-child(1) {
+	transform: rotate(45deg);
+}
+
+.flexbase-header__mobile-close-bar:nth-child(2) {
+	transform: rotate(-45deg);
 }
 
 /* ── Mobile off-canvas menu ──────────────────────────────────────────────────── */
 
 /*
  * Moved to <body> by main.js (root stacking context, z-index 10001).
- * The hamburger button is also moved to <body> on open (z-index 10003 inline)
- * so it stays visible above the panel regardless of sticky wrapper.
- * Backdrop sits at z-index 10000, covering the header bar.
+ * Backdrop sits at z-index 10000, covering the header and preventing
+ * interaction with page content while the menu is open.
+ * Close button at z-index 10003 stays above the panel.
  */
 .flexbase-header__mobile-menu {
+	display: flex;
+	flex-direction: column;
 	position: fixed;
 	top: 0;
 	right: 0;
 	width: min(320px, 85vw);
 	height: 100dvh;
 	z-index: 10001;
-	background-color: var(--flexbase-color-background, #ffffff);
+	background-color: var(--mobile-menu-bg, #ffffff);
 	border-left: 1px solid #e5e7eb;
 	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
@@ -265,12 +305,12 @@
 
 /* Logo inside mobile menu panel */
 .flexbase-header__mobile-logo {
-	padding: 1rem 3.5rem 0.5rem 1rem; /* right padding clears the floating hamburger X */
+	padding: 1.75rem 4rem 1.5rem 1.5rem; /* right clears the fixed close button (40px + 1rem) */
 	border-bottom: 1px solid #f3f4f6;
 }
 
 .flexbase-header__mobile-logo img {
-	height: 36px;
+	height: 32px;
 	width: auto;
 }
 
@@ -279,15 +319,18 @@
 	flex-direction: column;
 	list-style: none;
 	margin: 0;
-	padding: 0.5rem 1rem;
+	padding: 1.25rem 0 2rem;
 }
 
 .flexbase-header__mobile-menu .flexbase-nav__menu--mobile li a {
-	display: block;
-	padding: 0.75rem 0.5rem;
-	font-size: 1rem;
-	color: var(--flexbase-color-text, #1e1e2e);
-	border-bottom: 1px solid #f3f4f6;
+	display: flex;
+	align-items: center;
+	padding: 0.875rem 1.5rem;
+	font-size: 1.0625rem;
+	font-weight: 500;
+	color: var(--mobile-menu-text, #1e1e2e);
+	border-bottom: 1px solid #f9fafb;
+	transition: color 0.15s ease, background-color 0.15s ease;
 }
 
 .flexbase-header__mobile-menu .flexbase-nav__menu--mobile li:last-child a {
@@ -295,14 +338,16 @@
 }
 
 .flexbase-header__mobile-menu .flexbase-nav__menu--mobile li a:hover {
-	color: var(--flexbase-color-primary, #6366f1);
+	color: var(--mobile-menu-link-hover, #6366f1);
+	background-color: #f9fafb;
 	text-decoration: none;
 }
 
 .flexbase-header__mobile-menu .flexbase-nav__menu--mobile li.current-menu-item > a,
 .flexbase-header__mobile-menu .flexbase-nav__menu--mobile li.current_page_item > a {
 	font-weight: 600;
-	color: var(--flexbase-color-primary, #6366f1);
+	color: var(--mobile-menu-active-text, #6366f1);
+	background-color: var(--mobile-menu-active-bg, #f5f3ff);
 }
 
 /* ── Backdrop ────────────────────────────────────────────────────────────────── */
@@ -329,12 +374,98 @@ body.flexbase-menu-open {
 }
 
 /* ── Responsive breakpoint ───────────────────────────────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
+	.flexbase-header__logo img {
+		height: 32px;
+	}
+
 	.flexbase-header__nav {
+		display: none;
+	}
+
+	.flexbase-header__actions {
 		display: none;
 	}
 
 	.flexbase-header__hamburger {
 		display: flex;
 	}
+}
+
+/* ── Mobile menu actions (login/signup) ──────────────────────────────────────── */
+.flexbase-header__mobile-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 0.375rem;
+	padding: 0.75rem 1.5rem 1.25rem;
+	border-top: 1px solid #f3f4f6;
+	margin-top: auto;
+}
+
+.flexbase-header__mobile-actions .flexbase-header__action-link,
+.flexbase-header__mobile-actions .flexbase-header__action-button {
+	width: 100%;
+	text-align: center;
+	padding: 0.5rem 0.75rem;
+	font-size: 0.875rem;
+	border-radius: 6px;
+}
+
+.flexbase-header__mobile-actions .flexbase-header__action-link {
+	display: block;
+	color: var(--flexbase-color-primary, #6366f1);
+}
+
+.flexbase-header__mobile-actions .flexbase-header__action-link:hover,
+.flexbase-header__mobile-actions .flexbase-header__action-link:focus {
+	background-color: #f3f4f6;
+	text-decoration: none;
+}
+
+.flexbase-header__mobile-actions .flexbase-header__action-button {
+	display: block;
+	background-color: var(--flexbase-color-primary, #6366f1);
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.flexbase-header__mobile-actions .flexbase-header__action-button:hover,
+.flexbase-header__mobile-actions .flexbase-header__action-button:focus {
+	opacity: 0.9;
+	text-decoration: none;
+}
+
+.flexbase-header__mobile-actions .flexbase-header__action-button--login {
+	background-color: var(--login-bg, #6366f1);
+	color: var(--login-text, #ffffff);
+	border: var(--login-bd-size, 0) solid var(--login-border-color, #6366f1);
+	border-radius: var(--login-border-radius, 6px);
+	padding: var(--login-padding, 0.5rem 0.75rem);
+}
+
+.flexbase-header__mobile-actions .flexbase-header__action-button--login:hover,
+.flexbase-header__mobile-actions .flexbase-header__action-button--login:focus {
+	background-color: var(--login-hover-bg, #4f46e5);
+	color: var(--login-hover-text, #ffffff);
+	border: var(--login-bd-size, 0) solid var(--login-hover-border, #4f46e5);
+	opacity: 1;
+}
+
+.flexbase-header__mobile-actions .flexbase-header__action-button--signup {
+	background-color: var(--signup-bg, #8b5cf6);
+	color: var(--signup-text, #ffffff);
+	border: var(--signup-bd-size, 0) solid var(--signup-border-color, #8b5cf6);
+	border-radius: var(--signup-border-radius, 6px);
+	padding: var(--signup-padding, 0.5rem 0.75rem);
+}
+
+.flexbase-header__mobile-actions .flexbase-header__action-button--signup:hover,
+.flexbase-header__mobile-actions .flexbase-header__action-button--signup:focus {
+	background-color: var(--signup-hover-bg, #7c3aed);
+	color: var(--signup-hover-text, #ffffff);
+	border: var(--signup-bd-size, 0) solid var(--signup-hover-border, #7c3aed);
+	opacity: 1;
 }

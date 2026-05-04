@@ -12,64 +12,44 @@
 			return;
 		}
 
-		// Remember original DOM position so we can restore on close.
-		var hamburgerParent  = hamburger.parentNode;
-		var hamburgerNextSib = hamburger.nextSibling;
+		var closeBtn = mobileMenu.querySelector( '.flexbase-header__mobile-close' );
 
-		// Move menu to <body> (root stacking context).
+		// Move menu to <body> (root stacking context, z-index 10001).
 		document.body.appendChild( mobileMenu );
 
-		// Create backdrop.
+		// Create backdrop (z-index 10000, covers header).
 		var backdrop = document.createElement( 'div' );
 		backdrop.className = 'flexbase-nav-backdrop';
 		backdrop.setAttribute( 'aria-hidden', 'true' );
 		document.body.appendChild( backdrop );
 
 		function openMenu() {
-			/*
-			 * Capture the hamburger's viewport position while it's still inside
-			 * the header, then move it to <body> with position:fixed.
-			 * This places it in the root stacking context at z-index 10003,
-			 * above the menu panel (10001) and backdrop (10000), regardless of
-			 * whether a sticky wrapper is active.
-			 */
-			var rect = hamburger.getBoundingClientRect();
-			hamburger.style.cssText = [
-				'position:fixed',
-				'top:'   + Math.max( 0, rect.top )                    + 'px',
-				'right:' + Math.max( 0, window.innerWidth - rect.right ) + 'px',
-				'z-index:10003'
-			].join( ';' );
-			document.body.appendChild( hamburger );
-
 			hamburger.setAttribute( 'aria-expanded', 'true' );
-			hamburger.classList.add( 'is-active' );
 			mobileMenu.setAttribute( 'aria-hidden', 'false' );
 			mobileMenu.classList.add( 'is-open' );
 			backdrop.classList.add( 'is-visible' );
 			document.body.classList.add( 'flexbase-menu-open' );
+			if ( closeBtn ) {
+				closeBtn.classList.add( 'is-visible' );
+			}
 		}
 
 		function closeMenu() {
 			hamburger.setAttribute( 'aria-expanded', 'false' );
-			hamburger.classList.remove( 'is-active' );
 			mobileMenu.setAttribute( 'aria-hidden', 'true' );
 			mobileMenu.classList.remove( 'is-open' );
 			backdrop.classList.remove( 'is-visible' );
 			document.body.classList.remove( 'flexbase-menu-open' );
-
-			// Restore hamburger to header.
-			hamburger.style.cssText = '';
-			hamburgerParent.insertBefore( hamburger, hamburgerNextSib );
+			if ( closeBtn ) {
+				closeBtn.classList.remove( 'is-visible' );
+			}
 		}
 
-		hamburger.addEventListener( 'click', function () {
-			if ( this.getAttribute( 'aria-expanded' ) === 'true' ) {
-				closeMenu();
-			} else {
-				openMenu();
-			}
-		} );
+		hamburger.addEventListener( 'click', openMenu );
+
+		if ( closeBtn ) {
+			closeBtn.addEventListener( 'click', closeMenu );
+		}
 
 		backdrop.addEventListener( 'click', closeMenu );
 
@@ -81,7 +61,7 @@
 		} );
 
 		window.addEventListener( 'resize', function () {
-			if ( window.innerWidth > 768 && mobileMenu.classList.contains( 'is-open' ) ) {
+			if ( window.innerWidth > 992 && mobileMenu.classList.contains( 'is-open' ) ) {
 				closeMenu();
 			}
 		} );
