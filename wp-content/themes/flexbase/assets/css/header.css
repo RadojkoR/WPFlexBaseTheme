@@ -61,7 +61,7 @@
 	display: block;
 	padding: 0.5rem 0.875rem;
 	font-size: 0.9375rem;
-	color: var(--flexbase-header-text, #1e1e2e);
+	color: var(--flexbase-header-nav, #1e1e2e);
 	font-weight: var(--flexbase-nav-weight, 400);
 	text-transform: var(--flexbase-nav-transform, none);
 	transition: color 0.15s ease;

@@ -9,7 +9,11 @@
       "Bash(php -l wp-content/themes/flexbase/inc/fonts.php)",
       "Bash(cd /d C:\\\\xampp\\\\htdocs\\\\flexbase)",
       "Bash(php -r \"echo 'Settings check: '; var_dump\\(defined\\('ABSPATH'\\)\\);\")",
-      "Bash(netstat -ano)"
+      "Bash(netstat -ano)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"C:\\\\xampp\\\\htdocs\\\\flexbase\\\\wp-content\\\\themes\\\\flexbase\\\\screenshot.png\"\\); \"$\\($img.Width\\) x $\\($img.Height\\) px\"; $img.Dispose\\(\\))",
+      "PowerShell(Test-Path \"C:\\\\xampp\\\\htdocs\\\\flexbase\\\\wp-content\\\\themes\\\\flexbase\\\\screenshot.png\"; \\(Get-Item \"C:\\\\xampp\\\\htdocs\\\\flexbase\\\\wp-content\\\\themes\\\\flexbase\\\\screenshot.png\"\\).Length / 1KB -as [int])",
+      "WebFetch(domain:www.jsdelivr.com)",
+      "WebFetch(domain:cdn.jsdelivr.net)"
     ]
   }
 }

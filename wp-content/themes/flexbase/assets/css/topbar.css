@@ -6,6 +6,8 @@
 	z-index: 200; /* above header */
 	font-size: 0.8125rem; /* 13px */
 	line-height: 1.4;
+	background-color: var(--topbar-bg-color, #1e1e2e);
+	color: var(--topbar-text-color, #ffffff);
 }
 
 .flexbase-topbar__inner {
