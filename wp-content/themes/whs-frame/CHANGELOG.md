@@ -5,6 +5,17 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.7] - 2026-07-14
+
+### Removed
+- Featured image hero block removed from `single.php` for good (was briefly
+  re-added and made width-contained in this session, then removed again
+  after comparing against Astra: that theme doesn't render a dedicated
+  featured-image block on this post either — it just renders `the_content()`
+  as written, so the "first image" is whatever the author put first in the
+  post body). Matches that behavior now: no special image treatment, the
+  post content renders exactly as authored.
+
 ## [1.3.6] - 2026-07-14
 
 ### Removed
