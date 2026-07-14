@@ -28,12 +28,16 @@ body.whs-frame-layout--boxed .whs-frame-post {
    real option rather than a no-op so switching back to it is meaningful. */
 body.whs-frame-layout--content-boxed .whs-frame-post {
 	max-width: var(--whs-frame-container-width, 1200px);
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* Full Width/Contained — the article spans the full viewport, but body text
    keeps its readable-width column. */
 body.whs-frame-layout--full-width-contained .whs-frame-post {
 	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 	padding-left: 2rem;
 	padding-right: 2rem;
 }
@@ -41,6 +45,8 @@ body.whs-frame-layout--full-width-contained .whs-frame-post {
 /* Full Width/Stretched — nothing is constrained, text runs edge to edge. */
 body.whs-frame-layout--full-width-stretched .whs-frame-post {
 	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 	padding-left: 2rem;
 	padding-right: 2rem;
 }
@@ -51,6 +57,16 @@ body.whs-frame-layout--full-width-stretched .whs-frame-post__author-box,
 body.whs-frame-layout--full-width-stretched .whs-frame-post .nav-links,
 body.whs-frame-layout--full-width-stretched .whs-frame-comments {
 	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Custom — exact percentage set per post; the width itself is applied via a
+   tiny inline <style> in wp_head (inc/post-settings.php) since it's a
+   user-entered number, but centering lives here for consistency. */
+body.whs-frame-layout--custom .whs-frame-post {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* ── Header: categories, title, meta ─────────────────────────────────────── */

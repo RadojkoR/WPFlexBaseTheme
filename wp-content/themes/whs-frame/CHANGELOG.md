@@ -5,6 +5,24 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.2] - 2026-07-14
+
+### Added
+- **Custom Width** option in Content Layout (`_whs_frame_content_custom_width`
+  post meta, 20–100%, default 80): a `RangeControl` slider appears in the
+  panel when "Custom Width" is selected. The exact percentage is output as a
+  small inline `<style>` in `wp_head` (`inc/post-settings.php`) since it's a
+  user-entered number, not a preset — always paired with `margin: auto` so
+  the content is guaranteed centered.
+
+### Fixed
+- Explicit `margin-left: auto; margin-right: auto;` added to all Content
+  Layout override rules (Content Boxed, Full Width Contained, Full Width
+  Stretched) as a defensive fix — could not reproduce a reported "content
+  shifts right" issue on Full Width Stretched with a minimal test post, but
+  the modes were relying on inherited centering from `.container` rather
+  than asserting it directly.
+
 ## [1.4.1] - 2026-07-14
 
 ### Added

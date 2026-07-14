@@ -52,6 +52,19 @@ function whs_frame_register_post_meta() {
 			return current_user_can( 'edit_posts' );
 		},
 	] );
+
+	register_post_meta( '', '_whs_frame_content_custom_width', [
+		'show_in_rest'      => true,
+		'single'            => true,
+		'type'              => 'number',
+		'default'           => 80,
+		'sanitize_callback' => function ( $value ) {
+			return max( 20, min( 100, absint( $value ) ) );
+		},
+		'auth_callback'     => function () {
+			return current_user_can( 'edit_posts' );
+		},
+	] );
 }
 add_action( 'init', 'whs_frame_register_post_meta' );
 
@@ -62,7 +75,7 @@ add_action( 'init', 'whs_frame_register_post_meta' );
  * @return string
  */
 function whs_frame_sanitize_content_layout( $value ) {
-	$allowed = [ 'boxed', 'content-boxed', 'full-width-contained', 'full-width-stretched' ];
+	$allowed = [ 'boxed', 'content-boxed', 'full-width-contained', 'full-width-stretched', 'custom' ];
 	return in_array( $value, $allowed, true ) ? $value : '';
 }
 
@@ -124,6 +137,35 @@ function whs_frame_content_layout_body_class( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'whs_frame_content_layout_body_class' );
+
+/**
+ * Outputs the inline CSS for the "Custom" Content Layout width — the exact
+ * percentage is user-entered so it can't be pre-defined as a static class.
+ * Always paired with auto margins so the content stays centered.
+ */
+function whs_frame_content_custom_width_style() {
+	if ( ! is_singular() ) {
+		return;
+	}
+
+	$post_id = get_queried_object_id();
+	$layout  = get_post_meta( $post_id, '_whs_frame_content_layout', true );
+
+	if ( 'custom' !== $layout ) {
+		return;
+	}
+
+	$width = (int) get_post_meta( $post_id, '_whs_frame_content_custom_width', true );
+	if ( $width < 20 || $width > 100 ) {
+		$width = 80;
+	}
+
+	printf(
+		'<style id="whs-frame-content-custom-width">body.whs-frame-layout--custom .whs-frame-post{max-width:%1$d%%;margin-left:auto;margin-right:auto;}</style>',
+		absint( $width )
+	);
+}
+add_action( 'wp_head', 'whs_frame_content_custom_width_style' );
 
 // ─── Editor Panel Assets ─────────────────────────────────────────────────────
 

@@ -20,6 +20,7 @@
 	var useDispatch       = wp.data.useDispatch;
 	var CheckboxControl  = wp.components.CheckboxControl;
 	var SelectControl    = wp.components.SelectControl;
+	var RangeControl     = wp.components.RangeControl;
 	var h                = wp.element.createElement;
 	var __                = wp.i18n.__;
 
@@ -51,8 +52,17 @@
 						{ label: __( 'Content Boxed', 'whs-frame' ), value: 'content-boxed' },
 						{ label: __( 'Full Width/Contained', 'whs-frame' ), value: 'full-width-contained' },
 						{ label: __( 'Full Width/Stretched', 'whs-frame' ), value: 'full-width-stretched' },
+						{ label: __( 'Custom Width', 'whs-frame' ), value: 'custom' },
 					],
 					onChange: function ( v ) { setMeta( '_whs_frame_content_layout', v ); },
+				} ),
+				'custom' === meta._whs_frame_content_layout && h( RangeControl, {
+					label: __( 'Custom Width (%)', 'whs-frame' ),
+					value: meta._whs_frame_content_custom_width || 80,
+					onChange: function ( v ) { setMeta( '_whs_frame_content_custom_width', v ); },
+					min: 20,
+					max: 100,
+					help: __( 'Content is always centered at this width.', 'whs-frame' ),
 				} )
 			),
 			h( 'p', { className: 'whs-frame-doc-panel__heading' }, __( 'Disable Sections', 'whs-frame' ) ),
