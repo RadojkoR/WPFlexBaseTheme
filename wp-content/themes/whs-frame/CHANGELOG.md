@@ -5,7 +5,7 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.5.0] - 2026-07-14
+## [1.4.1] - 2026-07-14
 
 ### Added
 - **Content Layout** control in the WHS Frame Settings editor panel (matches
@@ -20,20 +20,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     site-wide "Boxed" mode wrapping header+content+footer together, like
     Astra's most dramatic variant, was out of scope for this pass
 
-### Note
-- Astra's "Sidebar" field (Left/Right/No Sidebar) was intentionally not
-  added — it requires a real widget-area system (`register_sidebar()`,
-  two-column templates) that doesn't exist in this theme yet. Deferred to a
-  future session so it isn't half-built.
-
-## [1.4.1] - 2026-07-14
-
 ### Changed
 - Styled the "WHS Frame Settings" editor panel — new
   `assets/admin/post-settings.css` gives it proper spacing between
   checkboxes, a small-caps "Disable Sections" group heading (matching
   Astra's layout), and consistent WP-admin-style field labels. Previously
   unstyled, the controls rendered cramped together with no visual grouping.
+
+### Note
+- Astra's "Sidebar" field (Left/Right/No Sidebar) was intentionally not
+  added — it requires a real widget-area system (`register_sidebar()`,
+  two-column templates) that doesn't exist in this theme yet. Deferred to a
+  future session so it isn't half-built.
 
 ## [1.4.0] - 2026-07-14
 
