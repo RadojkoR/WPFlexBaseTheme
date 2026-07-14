@@ -5,6 +5,20 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.5] - 2026-07-14
+
+### Changed
+- Comment form title: WP core default "Leave a Reply" → "Leave a Comment"
+  (matches common theme convention, e.g. Astra) via a `title_reply` arg to
+  `comment_form()` in `comments.php`. The contextual "Leave a Reply to
+  %s" title (shown when actually replying to a specific comment) is
+  unchanged — that one is informative, not the generic default.
+- "Cancel reply" link: previously unstyled, sitting directly against the
+  form title with no visual separation. Now a pill-style outlined button
+  with its own spacing (`#cancel-comment-reply-link`), and
+  `.comment-reply-title` uses flex + gap so the title and the cancel
+  control don't crowd each other.
+
 ## [1.3.4] - 2026-07-14
 
 ### Changed

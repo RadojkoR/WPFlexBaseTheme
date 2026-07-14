@@ -417,9 +417,33 @@
 }
 
 .whs-frame-comments .comment-reply-title {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.75rem;
 	font-size: 1.125rem;
 	font-weight: 700;
 	margin-bottom: 1rem;
+}
+
+.whs-frame-comments .comment-reply-title small {
+	font-size: 0.8125rem;
+	font-weight: 600;
+}
+
+.whs-frame-comments #cancel-comment-reply-link {
+	display: inline-block;
+	padding: 0.3rem 0.85rem;
+	border: 1px solid color-mix(in srgb, var(--whs-frame-color-text, #1e1e2e) 20%, transparent);
+	border-radius: 999px;
+	color: var(--whs-frame-color-text, #1e1e2e);
+	text-decoration: none;
+}
+
+.whs-frame-comments #cancel-comment-reply-link:hover {
+	border-color: var(--whs-frame-color-primary, #6366f1);
+	color: var(--whs-frame-color-primary, #6366f1);
+	text-decoration: none;
 }
 
 .whs-frame-comments .comment-notes,

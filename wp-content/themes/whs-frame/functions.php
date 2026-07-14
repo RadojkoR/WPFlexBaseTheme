@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-define( 'WHS_FRAME_VERSION', '1.3.4' );
+define( 'WHS_FRAME_VERSION', '1.3.5' );
 define( 'WHS_FRAME_DIR',     get_template_directory() );
 define( 'WHS_FRAME_URI',     get_template_directory_uri() );
 define( 'WHS_FRAME_INC',     WHS_FRAME_DIR . '/inc/' );

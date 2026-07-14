@@ -50,6 +50,10 @@ if ( post_password_required() ) {
 
 	<?php endif; ?>
 
-	<?php comment_form(); ?>
+	<?php
+	comment_form( [
+		'title_reply' => __( 'Leave a Comment', 'whs-frame' ),
+	] );
+	?>
 
 </div>
