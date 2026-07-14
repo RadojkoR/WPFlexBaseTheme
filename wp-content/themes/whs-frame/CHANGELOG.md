@@ -13,10 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   transparent/sticky header, which intentionally has no reserved spacer
   (floats over content by design).
 
-### Fixed
-- Comments now require login to post (`comment_registration` site option) —
-  matches the intended moderation flow (only logged-in users, i.e. the site
-  owner, can comment/reply).
+### Note
+- Guest commenting confirmed working as intended (WP core `comment_registration`
+  site option, not a theme setting): visitors can post comments without an
+  account, matching standard theme behavior (e.g. Astra).
 
 ## [1.3.0] - 2026-07-14
 
