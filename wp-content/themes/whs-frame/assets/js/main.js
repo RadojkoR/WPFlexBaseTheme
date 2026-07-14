@@ -5,14 +5,14 @@
 	'use strict';
 
 	document.addEventListener( 'DOMContentLoaded', function () {
-		var hamburger  = document.querySelector( '.flexbase-header__hamburger' );
+		var hamburger  = document.querySelector( '.whs-frame-header__hamburger' );
 		var mobileMenu = document.getElementById( 'flexbase-mobile-menu' );
 
 		if ( ! hamburger || ! mobileMenu ) {
 			return;
 		}
 
-		var closeBtn = mobileMenu.querySelector( '.flexbase-header__mobile-close' );
+		var closeBtn = mobileMenu.querySelector( '.whs-frame-header__mobile-close' );
 
 		// Move menu to <body> (root stacking context, z-index 10001).
 		document.body.appendChild( mobileMenu );

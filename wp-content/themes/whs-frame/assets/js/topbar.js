@@ -37,7 +37,7 @@
 			return;
 		}
 
-		var closeBtn = topbar.querySelector( '.flexbase-topbar__close' );
+		var closeBtn = topbar.querySelector( '.whs-frame-topbar__close' );
 		if ( ! closeBtn ) {
 			return;
 		}
