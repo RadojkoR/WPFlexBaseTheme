@@ -5,6 +5,16 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.4] - 2026-07-14
+
+### Changed
+- Comment form: Name / Email / Website now sit in one row (3 columns) on
+  desktop (≥641px), instead of stacking full-width. Implemented with an
+  unnamed CSS grid on `#commentform` — those three fields are consecutive
+  siblings in WP core's `comment_form()` output, so they fall into the grid's
+  columns automatically while every other field (comment textarea, cookies
+  consent, submit button) explicitly spans the full width.
+
 ## [1.3.3] - 2026-07-14
 
 ### Fixed

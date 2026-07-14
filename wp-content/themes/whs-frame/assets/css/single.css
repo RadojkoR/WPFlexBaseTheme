@@ -436,6 +436,25 @@
 	margin-bottom: 1rem;
 }
 
+/* Name / Email / Website in one row on desktop (they're consecutive siblings
+   in WP core's comment_form() output, so an unnamed 3-col grid lines them up
+   automatically — every other field just spans the full width). */
+@media (min-width: 641px) {
+	.whs-frame-comments #commentform {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0 1rem;
+	}
+
+	.whs-frame-comments .comment-notes,
+	.whs-frame-comments .logged-in-as,
+	.whs-frame-comments .comment-form-comment,
+	.whs-frame-comments .comment-form-cookies-consent,
+	.whs-frame-comments .form-submit {
+		grid-column: 1 / -1;
+	}
+}
+
 .whs-frame-comments .comment-form label {
 	display: block;
 	margin-bottom: 0.4rem;
