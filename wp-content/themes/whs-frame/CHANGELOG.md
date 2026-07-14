@@ -5,6 +5,19 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-07-14
+
+### Changed
+- `single.css`: increased `.whs-frame-post` top padding (2.5rem/1.5rem →
+  10rem/8rem desktop/mobile) so post title/category clear the topbar +
+  transparent/sticky header, which intentionally has no reserved spacer
+  (floats over content by design).
+
+### Fixed
+- Comments now require login to post (`comment_registration` site option) —
+  matches the intended moderation flow (only logged-in users, i.e. the site
+  owner, can comment/reply).
+
 ## [1.3.0] - 2026-07-14
 
 ### Added
