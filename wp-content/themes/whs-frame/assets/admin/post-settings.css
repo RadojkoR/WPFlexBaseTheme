@@ -1,0 +1,43 @@
+/* WHS Frame — post-settings.css */
+/* Styles the "WHS Frame Settings" PluginDocumentSettingPanel to match native
+   WP editor sidebar spacing/typography conventions. */
+
+.whs-frame-doc-panel .components-panel__body-toggle {
+	font-weight: 600;
+}
+
+.whs-frame-doc-panel__heading {
+	margin: 0 0 8px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05px;
+	color: #1e1e1e;
+}
+
+.whs-frame-doc-panel__group {
+	margin-bottom: 20px;
+}
+
+.whs-frame-doc-panel__group--last {
+	margin-bottom: 4px;
+}
+
+.whs-frame-doc-panel .components-checkbox-control__label {
+	font-size: 13px;
+}
+
+.whs-frame-doc-panel .components-checkbox-control {
+	margin-bottom: 10px;
+}
+
+.whs-frame-doc-panel .components-checkbox-control:last-child {
+	margin-bottom: 0;
+}
+
+.whs-frame-doc-panel .components-base-control__label {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05px;
+}

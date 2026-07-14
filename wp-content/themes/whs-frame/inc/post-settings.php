@@ -89,5 +89,12 @@ function whs_frame_enqueue_post_settings_assets() {
 		WHS_FRAME_VERSION,
 		true
 	);
+
+	wp_enqueue_style(
+		'whs-frame-post-settings',
+		WHS_FRAME_ASSETS . 'admin/post-settings.css',
+		[],
+		WHS_FRAME_VERSION
+	);
 }
 add_action( 'enqueue_block_editor_assets', 'whs_frame_enqueue_post_settings_assets' );
