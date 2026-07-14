@@ -3,7 +3,7 @@
  * Template Name: Full Width
  * Template Post Type: page
  *
- * @package FlexBase
+ * @package WHS Frame
  */
 
 defined('ABSPATH') || exit;
@@ -11,8 +11,8 @@ defined('ABSPATH') || exit;
 get_header();
 ?>
 
-<main class="flexbase-main flexbase-main--full-width">
-	<div class="flexbase-container">
+<main class="whs-frame-main whs-frame-main--full-width">
+	<div class="whs-frame-container">
 		<?php while ( have_posts() ) : the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="entry-content">

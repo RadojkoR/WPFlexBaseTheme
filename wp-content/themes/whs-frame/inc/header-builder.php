@@ -18,15 +18,15 @@ function whs_frame_header_render() {
 		$sticky_mode = 'none';
 	}
 
-	$classes = [ 'flexbase-header-wrap' ];
+	$classes = [ 'whs-frame-header-wrap' ];
 	if ( 'none' !== $sticky_mode ) {
-		$classes[] = 'flexbase-header-wrap--sticky';
+		$classes[] = 'whs-frame-header-wrap--sticky';
 	}
 	if ( $transparent ) {
-		$classes[] = 'flexbase-header-wrap--transparent';
+		$classes[] = 'whs-frame-header-wrap--transparent';
 	}
 	?>
-	<div id="flexbase-header-wrap"
+	<div id="whs-frame-header-wrap"
 		class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
 		data-sticky="<?php echo esc_attr( $sticky_mode ); ?>"
 		<?php echo $transparent ? 'data-transparent="true"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- hardcoded attribute string, no user data ?>>

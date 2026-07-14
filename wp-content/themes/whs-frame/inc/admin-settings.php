@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 // ─── Defaults ─────────────────────────────────────────────────────────────────
 
 /**
- * Returns the full array of default values for all FlexBase settings.
+ * Returns the full array of default values for all WHS Frame settings.
  *
  * @return array
  */
@@ -181,7 +181,7 @@ function whs_frame_settings_defaults() {
 // ─── Get All Settings ─────────────────────────────────────────────────────────
 
 /**
- * Returns all FlexBase settings merged with defaults.
+ * Returns all WHS Frame settings merged with defaults.
  * Uses static cache so the DB is only hit once per request.
  * Pass $refresh = true to invalidate the cache and re-read from the DB.
  *
@@ -418,7 +418,7 @@ function whs_frame_sanitize_settings( array $data ) {
 // ─── Helper: Read Single Option ───────────────────────────────────────────────
 
 /**
- * Read a single FlexBase setting by key.
+ * Read a single WHS Frame setting by key.
  *
  * @param  string $key     Setting key.
  * @param  mixed  $default Fallback value when key does not exist.
@@ -433,7 +433,7 @@ function whs_frame_opt( $key, $default = '' ) {
 
 /**
  * Structural settings that live as theme_mods (so the Customizer keeps live
- * preview) but are also exposed in the FlexBase Settings panel. Both UIs read
+ * preview) but are also exposed in the WHS Frame Settings panel. Both UIs read
  * and write the same theme_mod — a single source of truth.
  * Maps the REST/JS key to its theme_mod name, value type and default.
  *
@@ -600,11 +600,11 @@ add_action( 'init', 'whs_frame_migrate_theme_mods' );
 // ─── REST API ─────────────────────────────────────────────────────────────────
 
 /**
- * Register REST routes for reading and updating FlexBase settings.
+ * Register REST routes for reading and updating WHS Frame settings.
  */
 function whs_frame_register_rest_routes() {
 	register_rest_route(
-		'flexbase/v1',
+		'whs-frame/v1',
 		'/settings',
 		[
 			// GET — return current settings
@@ -684,7 +684,7 @@ function whs_frame_rest_update_settings( WP_REST_Request $request ) {
 // ─── Admin Menu ───────────────────────────────────────────────────────────────
 
 /**
- * Register the top-level "FlexBase Settings" admin menu page.
+ * Register the top-level "WHS Frame Settings" admin menu page.
  */
 function whs_frame_add_admin_menu() {
 	add_menu_page(
@@ -703,13 +703,13 @@ add_action( 'admin_menu', 'whs_frame_add_admin_menu' );
  * Outputs the React mount point for the settings page.
  */
 function whs_frame_admin_page_render() {
-	echo '<div id="flexbase-settings-root"></div>';
+	echo '<div id="whs-frame-settings-root"></div>';
 }
 
 // ─── Admin Asset Enqueueing ───────────────────────────────────────────────────
 
 /**
- * Enqueue admin styles and scripts — only on the FlexBase Settings page.
+ * Enqueue admin styles and scripts — only on the WHS Frame Settings page.
  *
  * The hook name is: toplevel_page_{menu-slug} = toplevel_page_whs-frame-settings
  */
@@ -727,7 +727,7 @@ function whs_frame_enqueue_admin_assets() {
 
 	// Admin stylesheet
 	wp_enqueue_style(
-		'flexbase-admin',
+		'whs-frame-admin',
 		get_template_directory_uri() . '/assets/admin/admin-settings.css',
 		[ 'font-awesome' ],
 		WHS_FRAME_VERSION
@@ -735,7 +735,7 @@ function whs_frame_enqueue_admin_assets() {
 
 	// Admin script (React app built on wp-element)
 	wp_enqueue_script(
-		'flexbase-admin',
+		'whs-frame-admin',
 		get_template_directory_uri() . '/assets/admin/admin-settings.js',
 		[ 'wp-element', 'wp-api-fetch', 'wp-i18n' ],
 		WHS_FRAME_VERSION,
@@ -753,11 +753,11 @@ function whs_frame_enqueue_admin_assets() {
 
 	// Pass data to the script
 	wp_localize_script(
-		'flexbase-admin',
+		'whs-frame-admin',
 		'whsFrameAdmin',
 		[
 			'nonce'         => wp_create_nonce( 'wp_rest' ),
-			'restUrl'       => rest_url( 'flexbase/v1/settings' ),
+			'restUrl'       => rest_url( 'whs-frame/v1/settings' ),
 			'fontLabels'    => whs_frame_google_fonts_list(),
 			'mediaPreviews' => $media_previews,
 		]

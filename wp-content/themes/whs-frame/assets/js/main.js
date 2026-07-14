@@ -1,4 +1,4 @@
-/* FlexBase — main.js */
+/* WHS Frame — main.js */
 
 // ── Hamburger / mobile menu toggle ───────────────────────────────────────────
 ( function () {
@@ -6,7 +6,7 @@
 
 	document.addEventListener( 'DOMContentLoaded', function () {
 		var hamburger  = document.querySelector( '.whs-frame-header__hamburger' );
-		var mobileMenu = document.getElementById( 'flexbase-mobile-menu' );
+		var mobileMenu = document.getElementById( 'whs-frame-mobile-menu' );
 
 		if ( ! hamburger || ! mobileMenu ) {
 			return;
@@ -19,7 +19,7 @@
 
 		// Create backdrop (z-index 10000, covers header).
 		var backdrop = document.createElement( 'div' );
-		backdrop.className = 'flexbase-nav-backdrop';
+		backdrop.className = 'whs-frame-nav-backdrop';
 		backdrop.setAttribute( 'aria-hidden', 'true' );
 		document.body.appendChild( backdrop );
 
@@ -28,7 +28,7 @@
 			mobileMenu.setAttribute( 'aria-hidden', 'false' );
 			mobileMenu.classList.add( 'is-open' );
 			backdrop.classList.add( 'is-visible' );
-			document.body.classList.add( 'flexbase-menu-open' );
+			document.body.classList.add( 'whs-frame-menu-open' );
 			if ( closeBtn ) {
 				closeBtn.classList.add( 'is-visible' );
 			}
@@ -39,7 +39,7 @@
 			mobileMenu.setAttribute( 'aria-hidden', 'true' );
 			mobileMenu.classList.remove( 'is-open' );
 			backdrop.classList.remove( 'is-visible' );
-			document.body.classList.remove( 'flexbase-menu-open' );
+			document.body.classList.remove( 'whs-frame-menu-open' );
 			if ( closeBtn ) {
 				closeBtn.classList.remove( 'is-visible' );
 			}

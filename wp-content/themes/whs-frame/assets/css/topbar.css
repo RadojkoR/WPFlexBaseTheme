@@ -1,4 +1,4 @@
-/* FlexBase — topbar.css */
+/* WHS Frame — topbar.css */
 
 /* ── Shell ───────────────────────────────────────────────────────────────────── */
 .whs-frame-topbar {
@@ -13,7 +13,7 @@
 .whs-frame-topbar__inner {
 	display: flex;
 	align-items: center;
-	max-width: var(--flexbase-container-width, 1200px);
+	max-width: var(--whs-frame-container-width, 1200px);
 	margin: 0 auto;
 	padding: 0 1rem;
 	min-height: 38px;

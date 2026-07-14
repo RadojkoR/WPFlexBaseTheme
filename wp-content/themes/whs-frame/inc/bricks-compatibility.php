@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Bricks Builder compatibility for FlexBase.
+ * Bricks Builder compatibility for WHS Frame.
  *
  * Handles:
  *  1. Theme support declaration
@@ -59,7 +59,7 @@ add_action( 'bricks/theme_locations/register', 'whs_frame_register_bricks_locati
  * before the default render (priority 10).
  *
  * Captures render_location('header') output. If Bricks has a template assigned
- * it renders it wrapped in #flexbase-header-wrap so sticky.js and
+ * it renders it wrapped in #whs-frame-header-wrap so sticky.js and
  * transparent-header logic still function. If nothing is rendered, returns early
  * and lets whs_frame_header_render run normally.
  */
@@ -84,16 +84,16 @@ function whs_frame_bricks_render_header() {
 		$sticky_mode = 'none';
 	}
 
-	$classes = [ 'flexbase-header-wrap', 'flexbase-header-wrap--bricks-location' ];
+	$classes = [ 'whs-frame-header-wrap', 'whs-frame-header-wrap--bricks-location' ];
 	if ( 'none' !== $sticky_mode ) {
-		$classes[] = 'flexbase-header-wrap--sticky';
+		$classes[] = 'whs-frame-header-wrap--sticky';
 	}
 	if ( $transparent ) {
-		$classes[] = 'flexbase-header-wrap--transparent';
+		$classes[] = 'whs-frame-header-wrap--transparent';
 	}
 
 	printf(
-		'<div id="flexbase-header-wrap" class="%s" data-sticky="%s"%s>%s</div>',
+		'<div id="whs-frame-header-wrap" class="%s" data-sticky="%s"%s>%s</div>',
 		esc_attr( implode( ' ', $classes ) ),
 		esc_attr( $sticky_mode ),
 		$transparent ? ' data-transparent="true"' : '',
@@ -125,7 +125,7 @@ function whs_frame_bricks_render_footer() {
 	}
 
 	printf(
-		'<div class="flexbase-footer-wrap flexbase-footer-wrap--bricks-location">%s</div>',
+		'<div class="whs-frame-footer-wrap whs-frame-footer-wrap--bricks-location">%s</div>',
 		$content // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — sanitised by Bricks
 	);
 
@@ -140,7 +140,7 @@ function whs_frame_bricks_body_classes( $classes ) {
 		return $classes;
 	}
 
-	$classes[] = 'flexbase-bricks-active';
+	$classes[] = 'whs-frame-bricks-active';
 
 	return $classes;
 }

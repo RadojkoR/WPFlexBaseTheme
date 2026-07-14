@@ -2,7 +2,7 @@
 
 // Build CSS variables for all footer colors
 $_footer_style = sprintf(
-	'--flexbase-color-background:%s;--flexbase-color-text:%s;--footer-link-color:%s;--footer-link-hover-color:%s;--footer-address-color:%s;--footer-heading-color:%s;--footer-social-icon-color:%s;--footer-social-hover-color:%s;--footer-copyright-text-color:%s;--footer-powered-by-color:%s;',
+	'--whs-frame-color-background:%s;--whs-frame-color-text:%s;--footer-link-color:%s;--footer-link-hover-color:%s;--footer-address-color:%s;--footer-heading-color:%s;--footer-social-icon-color:%s;--footer-social-hover-color:%s;--footer-copyright-text-color:%s;--footer-powered-by-color:%s;',
 	whs_frame_css_color( 'footer_bg_color',                '#ffffff' ),
 	whs_frame_css_color( 'footer_text_color',              '#4b5563' ),
 	whs_frame_css_color( 'footer_link_color',              '#6b7280' ),
@@ -82,15 +82,15 @@ foreach ( $social_networks as $n ) {
 }
 ?>
 
-<footer id="colophon" class="flexbase-footer" style="<?php echo esc_attr( $_footer_style . $_contact_style . $_social_style ); ?>">
+<footer id="colophon" class="whs-frame-footer" style="<?php echo esc_attr( $_footer_style . $_contact_style . $_social_style ); ?>">
 
-	<div class="flexbase-footer__columns">
-		<div class="flexbase-footer__inner">
+	<div class="whs-frame-footer__columns">
+		<div class="whs-frame-footer__inner">
 
 			<!-- Column 1: Brand & Address -->
-			<div class="flexbase-footer__col flexbase-footer__col--brand">
+			<div class="whs-frame-footer__col whs-frame-footer__col--brand">
 
-				<div class="flexbase-footer__logo">
+				<div class="whs-frame-footer__logo">
 					<?php if ( $footer_logo_id ) : ?>
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<?php echo wp_get_attachment_image( $footer_logo_id, 'full', false, [ 'class' => 'custom-logo' ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -98,21 +98,21 @@ foreach ( $social_networks as $n ) {
 					<?php elseif ( has_custom_logo() ) : ?>
 						<?php the_custom_logo(); ?>
 					<?php else : ?>
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="flexbase-footer__site-name">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="whs-frame-footer__site-name">
 							<?php bloginfo( 'name' ); ?>
 						</a>
 					<?php endif; ?>
 				</div>
 
 				<?php if ( $footer_address ) : ?>
-					<address class="flexbase-footer__address">
+					<address class="whs-frame-footer__address">
 						<?php if ( $contact_map_url ) : ?>
-							<a href="<?php echo esc_url( $contact_map_url ); ?>" target="_blank" rel="noopener noreferrer" class="flexbase-footer__address-link">
+							<a href="<?php echo esc_url( $contact_map_url ); ?>" target="_blank" rel="noopener noreferrer" class="whs-frame-footer__address-link">
 								<i class="<?php echo esc_attr( $contact_address_icon ); ?>"></i>
 								<span><?php echo wp_kses_post( nl2br( $footer_address ) ); ?></span>
 							</a>
 						<?php else : ?>
-							<div class="flexbase-footer__address-text">
+							<div class="whs-frame-footer__address-text">
 								<i class="<?php echo esc_attr( $contact_address_icon ); ?>"></i>
 								<span><?php echo wp_kses_post( nl2br( $footer_address ) ); ?></span>
 							</div>
@@ -124,19 +124,19 @@ foreach ( $social_networks as $n ) {
 
 			<?php if ( $has_contact ) : ?>
 			<!-- Column 2: Contact -->
-			<div class="flexbase-footer__col flexbase-footer__col--contact">
+			<div class="whs-frame-footer__col whs-frame-footer__col--contact">
 
-				<h4 class="flexbase-footer__heading"><?php esc_html_e( 'Contact', 'whs-frame' ); ?></h4>
+				<h4 class="whs-frame-footer__heading"><?php esc_html_e( 'Contact', 'whs-frame' ); ?></h4>
 
 				<?php if ( $contact_email_1 ) : ?>
-					<a href="mailto:<?php echo esc_attr( $contact_email_1 ); ?>" class="flexbase-footer__contact-link flexbase-footer__contact-link--email">
+					<a href="mailto:<?php echo esc_attr( $contact_email_1 ); ?>" class="whs-frame-footer__contact-link whs-frame-footer__contact-link--email">
 						<i class="fa-solid fa-envelope"></i>
 						<span><?php echo esc_html( $contact_email_1 ); ?></span>
 					</a>
 				<?php endif; ?>
 
 				<?php if ( $contact_email_2 ) : ?>
-					<a href="mailto:<?php echo esc_attr( $contact_email_2 ); ?>" class="flexbase-footer__contact-link flexbase-footer__contact-link--email">
+					<a href="mailto:<?php echo esc_attr( $contact_email_2 ); ?>" class="whs-frame-footer__contact-link whs-frame-footer__contact-link--email">
 						<i class="fa-solid fa-envelope"></i>
 						<span><?php echo esc_html( $contact_email_2 ); ?></span>
 					</a>
@@ -145,7 +145,7 @@ foreach ( $social_networks as $n ) {
 				<?php if ( $contact_phone_1 ) :
 					$tel_1 = preg_replace( '/[^\d+]/', '', $contact_phone_1 );
 				?>
-					<a href="tel:<?php echo esc_attr( $tel_1 ); ?>" class="flexbase-footer__contact-link flexbase-footer__contact-link--phone">
+					<a href="tel:<?php echo esc_attr( $tel_1 ); ?>" class="whs-frame-footer__contact-link whs-frame-footer__contact-link--phone">
 						<i class="fa-solid fa-phone"></i>
 						<span><?php echo esc_html( $contact_phone_1 ); ?></span>
 					</a>
@@ -154,7 +154,7 @@ foreach ( $social_networks as $n ) {
 				<?php if ( $contact_phone_2 ) :
 					$tel_2 = preg_replace( '/[^\d+]/', '', $contact_phone_2 );
 				?>
-					<a href="tel:<?php echo esc_attr( $tel_2 ); ?>" class="flexbase-footer__contact-link flexbase-footer__contact-link--phone">
+					<a href="tel:<?php echo esc_attr( $tel_2 ); ?>" class="whs-frame-footer__contact-link whs-frame-footer__contact-link--phone">
 						<i class="fa-solid fa-phone"></i>
 						<span><?php echo esc_html( $contact_phone_2 ); ?></span>
 					</a>
@@ -165,11 +165,11 @@ foreach ( $social_networks as $n ) {
 
 			<?php if ( $has_social ) : ?>
 			<!-- Column 3: Social Media -->
-			<div class="flexbase-footer__col flexbase-footer__col--social">
+			<div class="whs-frame-footer__col whs-frame-footer__col--social">
 
-				<h4 class="flexbase-footer__heading"><?php esc_html_e( 'Follow Us', 'whs-frame' ); ?></h4>
+				<h4 class="whs-frame-footer__heading"><?php esc_html_e( 'Follow Us', 'whs-frame' ); ?></h4>
 
-				<ul class="flexbase-footer__social">
+				<ul class="whs-frame-footer__social">
 					<?php foreach ( $social_networks as $network ) :
 						$url  = whs_frame_opt( 'footer_social_' . $network, '' );
 						$icon = whs_frame_opt( 'social_' . $network . '_icon', '' );
@@ -182,7 +182,7 @@ foreach ( $social_networks as $n ) {
 							   target="_blank"
 							   rel="noopener noreferrer"
 							   aria-label="<?php echo esc_attr( $social_labels[ $network ] ); ?>"
-							   class="flexbase-footer__social-link">
+							   class="whs-frame-footer__social-link">
 								<?php if ( $icon ) : ?>
 									<i class="<?php echo esc_attr( $icon ); ?>"></i>
 								<?php endif; ?>
@@ -200,26 +200,26 @@ foreach ( $social_networks as $n ) {
 	<?php
 	// Footer navigation (if menu is set)
 	if ( has_nav_menu( 'footer' ) ) : ?>
-		<nav class="flexbase-footer__nav" aria-label="<?php esc_attr_e( 'Footer Menu', 'whs-frame' ); ?>">
+		<nav class="whs-frame-footer__nav" aria-label="<?php esc_attr_e( 'Footer Menu', 'whs-frame' ); ?>">
 			<?php
 			wp_nav_menu( [
 				'theme_location' => 'footer',
 				'container'      => false,
 				'depth'          => 1,
 				'fallback_cb'    => false,
-				'items_wrap'     => '<ul class="flexbase-footer__nav-menu">%3$s</ul>',
+				'items_wrap'     => '<ul class="whs-frame-footer__nav-menu">%3$s</ul>',
 			] );
 			?>
 		</nav>
 	<?php endif; ?>
 
-	<div class="flexbase-footer__bar">
-		<div class="flexbase-footer__bar-inner">
+	<div class="whs-frame-footer__bar">
+		<div class="whs-frame-footer__bar-inner">
 
 			<?php if ( $footer_copy ) : ?>
-				<p class="flexbase-footer__copyright"><?php echo wp_kses_post( $footer_copy ); ?></p>
+				<p class="whs-frame-footer__copyright"><?php echo wp_kses_post( $footer_copy ); ?></p>
 			<?php else : ?>
-				<p class="flexbase-footer__copyright">
+				<p class="whs-frame-footer__copyright">
 					&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?>
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
 						<?php bloginfo( 'name' ); ?>
@@ -228,7 +228,7 @@ foreach ( $social_networks as $n ) {
 			<?php endif; ?>
 
 			<?php if ( $powered_by_text ) : ?>
-				<p class="flexbase-footer__powered-by">
+				<p class="whs-frame-footer__powered-by">
 					<?php if ( $powered_by_url ) : ?>
 						<a href="<?php echo esc_url( $powered_by_url ); ?>" target="_blank" rel="noopener noreferrer">
 							<?php echo esc_html( $powered_by_text ); ?>

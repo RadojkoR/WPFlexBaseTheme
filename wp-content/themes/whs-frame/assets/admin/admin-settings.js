@@ -1,4 +1,4 @@
-﻿/* FlexBase Admin Settings — admin-settings.js */
+﻿/* WHS Frame Admin Settings — admin-settings.js */
 /* global wp, whsFrameAdmin */
 ( function () {
 	'use strict';
@@ -494,7 +494,7 @@
 				);
 				if ( mismatched.length ) {
 					// eslint-disable-next-line no-console
-					console.warn( '[FlexBase Themes] Preset "' + id + '" — keys not in settings:', mismatched );
+					console.warn( '[WHS Frame Themes] Preset "' + id + '" — keys not in settings:', mismatched );
 				}
 			}
 
@@ -1159,7 +1159,7 @@
 			h( 'div', { className: 'fb-header' },
 				h( 'div', { className: 'fb-header__title' },
 					h( 'span', { className: 'dashicons dashicons-layout fb-header__icon' } ),
-					'FlexBase Settings'
+					'WHS Frame Settings'
 				),
 				h( 'div', { className: 'fb-header__actions' },
 					status === 'saved' && h( 'span', { className: 'fb-status fb-status--ok'  }, '✓ Saved' ),
@@ -1196,7 +1196,7 @@
 
 	// ─── Mount ────────────────────────────────────────────────────────────────────
 
-	const root = document.getElementById( 'flexbase-settings-root' );
+	const root = document.getElementById( 'whs-frame-settings-root' );
 	if ( root ) {
 		if ( typeof wp.element.createRoot === 'function' ) {
 			wp.element.createRoot( root ).render( h( App ) );

@@ -3,7 +3,7 @@
  * Template Name: Gutenberg Full Width
  * Template Post Type: page
  *
- * @package FlexBase
+ * @package WHS Frame
  */
 
 defined('ABSPATH') || exit;
@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
 get_header();
 ?>
 
-<main class="flexbase-main flexbase-main--gutenberg-full-width">
+<main class="whs-frame-main whs-frame-main--gutenberg-full-width">
 	<?php while ( have_posts() ) : the_post(); ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'alignfull' ); ?>>
 		<div class="entry-content">

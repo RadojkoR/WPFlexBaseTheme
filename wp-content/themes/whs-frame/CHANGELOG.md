@@ -1,17 +1,23 @@
 # Changelog
 
-All notable changes to the FlexBase WordPress Theme will be documented in this file.
+All notable changes to the WHS Frame WordPress Theme will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [1.2.1] - 2026-07-14
 
+### Changed
+- **Theme renamed from FlexBase to WHS Frame** (`whs-frame` slug): all function
+  prefixes (`whs_frame_*`), constants (`WHS_FRAME_*`), CSS classes (`.whs-frame-*`),
+  the text domain, the REST namespace (`whs-frame/v1`), the settings option
+  (`whs_frame_settings`) and the admin menu ("WHS Frame Settings") were updated.
+
 ### Removed
 - **Builder Integration (Pro)** and the whole premium gate, ahead of the
   WordPress.org theme review (no incomplete/non-functional Pro upsell allowed
   without a real companion product): the "Builder" settings tab, the
-  `flexbase/v1/builder-template` REST endpoint (`inc/builder.php`), the
+  `whs-frame/v1/builder-template` REST endpoint (`inc/builder.php`), the
   `whs_frame_is_premium()` / `WHS_FRAME_PREMIUM` gate, the Elementor-template
   render branches for Top Bar/Header/Footer, their `*_elementor_template`
   theme_mods and Customizer control, and all related admin JS/CSS.
@@ -23,13 +29,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Builder Integration (Pro)** — replace the default Top Bar, Header or Footer
   with an Elementor template (works with free Elementor):
   - `whs_frame_is_premium()` gate — unlocked via the `whs_frame_premium` filter
-    (future FlexBase Pro companion plugin) or the `WHS_FRAME_PREMIUM` dev constant.
+    (future WHS Frame Pro companion plugin) or the `WHS_FRAME_PREMIUM` dev constant.
   - New "Builder" tab in the settings panel: template selects for all three slots,
     "Create New" (one click creates an Elementor section template via
-    `POST flexbase/v1/builder-template` and opens the Elementor editor) and
+    `POST whs-frame/v1/builder-template` and opens the Elementor editor) and
     "Edit in Elementor" buttons. Locked state shows a Pro upsell card and the
     tab carries a PRO badge.
-  - Top bar template render keeps the `#flexbase-topbar` wrapper so sticky offset
+  - Top bar template render keeps the `#whs-frame-topbar` wrapper so sticky offset
     logic continues to work; header template render keeps sticky/transparent.
 - Everything else in the theme remains free.
 
@@ -72,7 +78,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-07-03
 
 ### Added
-- Customizer structural settings exposed in the FlexBase Settings panel via
+- Customizer structural settings exposed in the WHS Frame Settings panel via
   `whs_frame_mirror_fields()` — REST reads/writes the same theme_mods, keeping the
   Customizer and the panel in sync (topbar enable/hide/dismiss/column types,
   sticky mode, transparent header, mobile menu logo, Elementor header template,
@@ -262,7 +268,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### File Structure
 ```
-wp-content/themes/flexbase/
+wp-content/themes/whs-frame/
 ├── style.css
 ├── functions.php
 ├── index.php

@@ -1,10 +1,10 @@
-/* FlexBase — topbar.js */
+/* WHS Frame — topbar.js */
 
 // ── Top bar dismiss ───────────────────────────────────────────────────────────
 ( function () {
 	'use strict';
 
-	var STORAGE_KEY = 'flexbase-topbar-dismissed';
+	var STORAGE_KEY = 'whs-frame-topbar-dismissed';
 
 	function isDismissed() {
 		try {
@@ -23,7 +23,7 @@
 	}
 
 	document.addEventListener( 'DOMContentLoaded', function () {
-		var topbar = document.getElementById( 'flexbase-topbar' );
+		var topbar = document.getElementById( 'whs-frame-topbar' );
 
 		if ( ! topbar || topbar.getAttribute( 'data-dismissible' ) !== 'true' ) {
 			return;
@@ -44,7 +44,7 @@
 
 		closeBtn.addEventListener( 'click', function () {
 			rememberDismissed();
-			topbar.classList.add( 'flexbase-topbar--dismissed' );
+			topbar.classList.add( 'whs-frame-topbar--dismissed' );
 
 			// Remove from DOM after transition so it no longer occupies space.
 			topbar.addEventListener( 'transitionend', function onEnd( e ) {

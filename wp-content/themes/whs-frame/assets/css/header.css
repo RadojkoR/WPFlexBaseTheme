@@ -1,9 +1,9 @@
-/* FlexBase — header.css */
+/* WHS Frame — header.css */
 
 /* ── Header shell ────────────────────────────────────────────────────────────── */
 .whs-frame-header {
-	background-color: var(--flexbase-header-bg, #ffffff);
-	color: var(--flexbase-header-text, #1e1e2e);
+	background-color: var(--whs-frame-header-bg, #ffffff);
+	color: var(--whs-frame-header-text, #1e1e2e);
 	border-bottom: 1px solid #e5e7eb;
 	position: relative;
 	z-index: 100;
@@ -12,7 +12,7 @@
 .whs-frame-header__inner {
 	display: flex;
 	align-items: center;
-	max-width: var(--flexbase-container-width, 1200px);
+	max-width: var(--whs-frame-container-width, 1200px);
 	margin: 0 auto;
 	padding: 0 1rem;
 	height: 70px;
@@ -33,7 +33,7 @@
 .whs-frame-header__site-name {
 	font-size: 1.25rem;
 	font-weight: 700;
-	color: var(--flexbase-color-text, #1e1e2e);
+	color: var(--whs-frame-color-text, #1e1e2e);
 }
 
 .whs-frame-header__site-name:hover {
@@ -61,23 +61,23 @@
 	display: block;
 	padding: 0.5rem 0.875rem;
 	font-size: 0.9375rem;
-	color: var(--flexbase-header-nav, #1e1e2e);
-	font-weight: var(--flexbase-nav-weight, 400);
-	text-transform: var(--flexbase-nav-transform, none);
+	color: var(--whs-frame-header-nav, #1e1e2e);
+	font-weight: var(--whs-frame-nav-weight, 400);
+	text-transform: var(--whs-frame-nav-transform, none);
 	transition: color 0.15s ease;
 }
 
 .whs-frame-header__nav .whs-frame-nav__menu li a:hover,
 .whs-frame-header__nav .whs-frame-nav__menu li a:focus {
 	background: none !important;
-	color: var(--flexbase-nav-hover, var(--flexbase-color-primary, #6366f1));
+	color: var(--whs-frame-nav-hover, var(--whs-frame-color-primary, #6366f1));
 	text-decoration: none;
 }
 
 .whs-frame-header__nav .whs-frame-nav__menu li.current-menu-item > a,
 .whs-frame-header__nav .whs-frame-nav__menu li.current_page_item > a {
 	font-weight: 600;
-	color: var(--flexbase-nav-active, var(--flexbase-color-primary, #6366f1));
+	color: var(--whs-frame-nav-active, var(--whs-frame-color-primary, #6366f1));
 }
 
 /* ── Header actions (login/signup/language) ────────────────────────────────── */
@@ -89,7 +89,7 @@
 }
 
 .whs-frame-header__action-link {
-	color: var(--flexbase-header-text, #1e1e2e);
+	color: var(--whs-frame-header-text, #1e1e2e);
 	text-decoration: none;
 	padding: 0.5rem 0;
 	font-size: 0.9375rem;
@@ -98,7 +98,7 @@
 
 .whs-frame-header__action-link:hover,
 .whs-frame-header__action-link:focus {
-	color: var(--flexbase-color-primary, #6366f1);
+	color: var(--whs-frame-color-primary, #6366f1);
 	text-decoration: none;
 }
 
@@ -106,7 +106,7 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	background-color: var(--flexbase-color-primary, #6366f1);
+	background-color: var(--whs-frame-color-primary, #6366f1);
 	color: #ffffff;
 	text-decoration: none;
 	padding: 0.5rem 1rem;
@@ -122,7 +122,7 @@
 .whs-frame-header__action-button:focus {
 	opacity: 0.9;
 	text-decoration: none;
-	background-color: var(--flexbase-color-primary, #6366f1);
+	background-color: var(--whs-frame-color-primary, #6366f1);
 }
 
 /* ── Login button styling ────────────────────────────────────────────────────── */
@@ -179,13 +179,13 @@
 
 .whs-frame-header__language-switcher a {
 	text-decoration: none;
-	color: var(--flexbase-header-text, #1e1e2e);
+	color: var(--whs-frame-header-text, #1e1e2e);
 	transition: color 0.15s ease;
 }
 
 .whs-frame-header__language-switcher a:hover,
 .whs-frame-header__language-switcher a:focus {
-	color: var(--flexbase-color-primary, #6366f1);
+	color: var(--whs-frame-color-primary, #6366f1);
 }
 
 /* ── Hamburger button ────────────────────────────────────────────────────────── */
@@ -212,7 +212,7 @@
 	display: block;
 	width: 100%;
 	height: 2px;
-	background-color: var(--flexbase-color-text, #1e1e2e);
+	background-color: var(--whs-frame-color-text, #1e1e2e);
 	border-radius: 2px;
 	transition: transform 0.25s ease, opacity 0.25s ease;
 }
@@ -413,7 +413,7 @@ body.whs-frame-menu-open {
 
 .whs-frame-header__mobile-actions .whs-frame-header__action-link {
 	display: block;
-	color: var(--flexbase-color-primary, #6366f1);
+	color: var(--whs-frame-color-primary, #6366f1);
 }
 
 .whs-frame-header__mobile-actions .whs-frame-header__action-link:hover,
@@ -424,7 +424,7 @@ body.whs-frame-menu-open {
 
 .whs-frame-header__mobile-actions .whs-frame-header__action-button {
 	display: block;
-	background-color: var(--flexbase-color-primary, #6366f1);
+	background-color: var(--whs-frame-color-primary, #6366f1);
 	color: #ffffff;
 	text-decoration: none;
 	font-weight: 500;

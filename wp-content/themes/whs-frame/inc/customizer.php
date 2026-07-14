@@ -49,7 +49,7 @@ function whs_frame_main_customizer( $wp_customize ) {
 	$panel = 'whs_frame_main_panel';
 
 	$wp_customize->add_panel( $panel, [
-		'title'    => __( 'FlexBase Theme', 'whs-frame' ),
+		'title'    => __( 'WHS Frame Theme', 'whs-frame' ),
 		'priority' => 20,
 	] );
 
@@ -161,7 +161,7 @@ function whs_frame_main_customizer( $wp_customize ) {
 
 	// 'custom_logo' setting is registered by core (Site Identity) — re-registering it
 	// here would drop core's postMessage transport and selective refresh. This extra
-	// control simply exposes the same setting inside the FlexBase Header section.
+	// control simply exposes the same setting inside the WHS Frame Header section.
 	$wp_customize->add_control( new WP_Customize_Cropped_Image_Control( $wp_customize, 'whs_frame_logo', [
 		'settings'    => 'custom_logo',
 		'label'       => __( 'Logo', 'whs-frame' ),

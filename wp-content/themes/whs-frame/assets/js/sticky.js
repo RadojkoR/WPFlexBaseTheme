@@ -1,12 +1,12 @@
-/* FlexBase — sticky.js */
+/* WHS Frame — sticky.js */
 
 // ── Sticky header: none / always / scroll_up + transparent transition ─────────
 ( function () {
 	'use strict';
 
 	document.addEventListener( 'DOMContentLoaded', function () {
-		var wrap   = document.getElementById( 'flexbase-header-wrap' );
-		var topbar = document.getElementById( 'flexbase-topbar' );
+		var wrap   = document.getElementById( 'whs-frame-header-wrap' );
+		var topbar = document.getElementById( 'whs-frame-topbar' );
 
 		if ( ! wrap ) {
 			return;

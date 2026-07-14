@@ -52,7 +52,7 @@ function whs_frame_topbar_render_social() {
 	}
 
 	if ( $items ) {
-		echo '<ul class="flexbase-topbar__social">' . $items . '</ul>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<ul class="whs-frame-topbar__social">' . $items . '</ul>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 }
 
@@ -66,7 +66,7 @@ function whs_frame_topbar_render_col( $col ) {
 			$email = sanitize_email( whs_frame_opt( 'topbar_' . $col . '_email', '' ) );
 			if ( $email ) {
 				printf(
-					'<a href="mailto:%1$s" class="flexbase-topbar__link">%2$s<span>%1$s</span></a>',
+					'<a href="mailto:%1$s" class="whs-frame-topbar__link">%2$s<span>%1$s</span></a>',
 					esc_attr( $email ),
 					whs_frame_topbar_icon( 'email' ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				);
@@ -78,7 +78,7 @@ function whs_frame_topbar_render_col( $col ) {
 			if ( $phone ) {
 				$tel = preg_replace( '/[^\d+]/', '', $phone );
 				printf(
-					'<a href="tel:%s" class="flexbase-topbar__link">%s<span>%s</span></a>',
+					'<a href="tel:%s" class="whs-frame-topbar__link">%s<span>%s</span></a>',
 					esc_attr( $tel ),
 					whs_frame_topbar_icon( 'phone' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					esc_html( $phone )
@@ -90,10 +90,10 @@ function whs_frame_topbar_render_col( $col ) {
 			$email = sanitize_email( whs_frame_opt( 'topbar_' . $col . '_email', '' ) );
 			$phone = sanitize_text_field( whs_frame_opt( 'topbar_' . $col . '_phone', '' ) );
 			if ( $email || $phone ) {
-				echo '<div class="flexbase-topbar__contact">';
+				echo '<div class="whs-frame-topbar__contact">';
 				if ( $email ) {
 					printf(
-						'<a href="mailto:%1$s" class="flexbase-topbar__link">%2$s<span>%1$s</span></a>',
+						'<a href="mailto:%1$s" class="whs-frame-topbar__link">%2$s<span>%1$s</span></a>',
 						esc_attr( $email ),
 						whs_frame_topbar_icon( 'email' ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					);
@@ -101,7 +101,7 @@ function whs_frame_topbar_render_col( $col ) {
 				if ( $phone ) {
 					$tel = preg_replace( '/[^\d+]/', '', $phone );
 					printf(
-						'<a href="tel:%s" class="flexbase-topbar__link">%s<span>%s</span></a>',
+						'<a href="tel:%s" class="whs-frame-topbar__link">%s<span>%s</span></a>',
 						esc_attr( $tel ),
 						whs_frame_topbar_icon( 'phone' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						esc_html( $phone )
@@ -118,7 +118,7 @@ function whs_frame_topbar_render_col( $col ) {
 		case 'custom_text':
 			$text = whs_frame_opt( 'topbar_' . $col . '_text', '' );
 			if ( $text ) {
-				echo '<span class="flexbase-topbar__text">' . wp_kses_post( $text ) . '</span>';
+				echo '<span class="whs-frame-topbar__text">' . wp_kses_post( $text ) . '</span>';
 			}
 			break;
 	}
@@ -136,12 +136,12 @@ function whs_frame_topbar_render() {
 
 	$dismissible = get_theme_mod( 'whs_frame_topbar_dismissible', false );
 
-	$classes = [ 'flexbase-topbar' ];
+	$classes = [ 'whs-frame-topbar' ];
 	if ( $hide_mobile ) {
-		$classes[] = 'flexbase-topbar--hide-mobile';
+		$classes[] = 'whs-frame-topbar--hide-mobile';
 	}
 	if ( $dismissible ) {
-		$classes[] = 'flexbase-topbar--dismissible';
+		$classes[] = 'whs-frame-topbar--dismissible';
 	}
 
 	$inline_style = sprintf(
@@ -151,7 +151,7 @@ function whs_frame_topbar_render() {
 		whs_frame_css_color( 'topbar_link_color', '#a5b4fc' )
 	);
 	?>
-	<div id="flexbase-topbar"
+	<div id="whs-frame-topbar"
 		class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
 		style="<?php echo esc_attr( $inline_style ); ?>"
 		<?php echo $dismissible ? 'data-dismissible="true"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- hardcoded attribute string, no user data ?>>
@@ -163,16 +163,16 @@ function whs_frame_topbar_render() {
 			'right'  => get_theme_mod( 'whs_frame_topbar_right_type',  'social_icons' ),
 		];
 		?>
-		<div class="flexbase-topbar__inner">
+		<div class="whs-frame-topbar__inner">
 
 			<?php foreach ( $col_types as $col => $col_type ) : ?>
-			<div class="flexbase-topbar__col flexbase-topbar__col--<?php echo esc_attr( $col ); ?> flexbase-topbar__col--<?php echo esc_attr( $col_type ); ?>">
+			<div class="whs-frame-topbar__col whs-frame-topbar__col--<?php echo esc_attr( $col ); ?> whs-frame-topbar__col--<?php echo esc_attr( $col_type ); ?>">
 				<?php whs_frame_topbar_render_col( $col ); ?>
 			</div>
 			<?php endforeach; ?>
 
 			<?php if ( $dismissible ) : ?>
-			<button class="flexbase-topbar__close" aria-label="<?php esc_attr_e( 'Close top bar', 'whs-frame' ); ?>">
+			<button class="whs-frame-topbar__close" aria-label="<?php esc_attr_e( 'Close top bar', 'whs-frame' ); ?>">
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
 			</button>
 			<?php endif; ?>

@@ -49,21 +49,21 @@ function whs_frame_output_css_vars() {
 	$signup_hover_border  = sanitize_hex_color( whs_frame_opt( 'nav_signup_button_hover_border_color', '#7c3aed' ) ) ?: '#7c3aed';
 
 	$css = ":root {\n"
-		. "\t--flexbase-color-primary:        {$primary};\n"
-		. "\t--flexbase-color-secondary:      {$secondary};\n"
-		. "\t--flexbase-color-background:     {$background};\n"
-		. "\t--flexbase-color-text:           {$text};\n"
-		. "\t--flexbase-container-width:      {$width}px;\n"
-		. "\t--flexbase-header-bg:            {$header_bg};\n"
-		. "\t--flexbase-header-text:          {$header_txt};\n"
-		. "\t--flexbase-header-nav:           {$header_nav};\n"
-		. "\t--flexbase-transp-text:          {$transp_text};\n"
-		. "\t--flexbase-transp-hover:         {$transp_hover};\n"
-		. "\t--flexbase-transp-active:        {$transp_active};\n"
-		. "\t--flexbase-nav-hover:            {$nav_hover};\n"
-		. "\t--flexbase-nav-active:           {$nav_active};\n"
-		. "\t--flexbase-nav-transform:        {$nav_text_transform};\n"
-		. "\t--flexbase-nav-weight:           {$nav_font_weight};\n"
+		. "\t--whs-frame-color-primary:        {$primary};\n"
+		. "\t--whs-frame-color-secondary:      {$secondary};\n"
+		. "\t--whs-frame-color-background:     {$background};\n"
+		. "\t--whs-frame-color-text:           {$text};\n"
+		. "\t--whs-frame-container-width:      {$width}px;\n"
+		. "\t--whs-frame-header-bg:            {$header_bg};\n"
+		. "\t--whs-frame-header-text:          {$header_txt};\n"
+		. "\t--whs-frame-header-nav:           {$header_nav};\n"
+		. "\t--whs-frame-transp-text:          {$transp_text};\n"
+		. "\t--whs-frame-transp-hover:         {$transp_hover};\n"
+		. "\t--whs-frame-transp-active:        {$transp_active};\n"
+		. "\t--whs-frame-nav-hover:            {$nav_hover};\n"
+		. "\t--whs-frame-nav-active:           {$nav_active};\n"
+		. "\t--whs-frame-nav-transform:        {$nav_text_transform};\n"
+		. "\t--whs-frame-nav-weight:           {$nav_font_weight};\n"
 		. "\t--login-bg:                      " . ( $login_transparent ? 'transparent' : $login_bg ) . ";\n"
 		. "\t--login-text:                    {$login_text};\n"
 		. "\t--login-border-color:            {$login_border};\n"
@@ -88,6 +88,6 @@ function whs_frame_output_css_vars() {
 		. "\t--signup-hover-border:           {$signup_hover_border};\n"
 		. '}';
 
-	wp_add_inline_style( 'flexbase-main', $css );
+	wp_add_inline_style( 'whs-frame-main', $css );
 }
 add_action( 'wp_enqueue_scripts', 'whs_frame_output_css_vars', 25 );

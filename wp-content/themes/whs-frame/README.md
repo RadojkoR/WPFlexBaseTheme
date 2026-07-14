@@ -1,6 +1,6 @@
-# FlexBase — Modern, Flexible WordPress Theme
+# WHS Frame — Modern, Flexible WordPress Theme
 
-A powerful, modern WordPress theme designed for flexibility and ease of use. Built with Vanilla CSS and JavaScript, FlexBase offers seamless integration with popular page builders while maintaining a lightweight footprint.
+A powerful, modern WordPress theme designed for flexibility and ease of use. Built with Vanilla CSS and JavaScript, WHS Frame offers seamless integration with popular page builders while maintaining a lightweight footprint.
 
 ## Features
 
@@ -40,11 +40,11 @@ A powerful, modern WordPress theme designed for flexibility and ease of use. Bui
 1. Extract `whs-frame.zip` on your computer
 2. Upload the `whs-frame` folder to `/wp-content/themes/`
 3. Go to **Appearance → Themes** in WordPress admin
-4. Click **Activate** next to FlexBase
+4. Click **Activate** next to WHS Frame
 
-## How to Use FlexBase Settings Panel
+## How to Use WHS Frame Settings Panel
 
-After activating FlexBase, access the theme settings via **FlexBase Settings** in the WordPress admin menu (left sidebar).
+After activating WHS Frame, access the theme settings via **WHS Frame Settings** in the WordPress admin menu (left sidebar).
 
 ### Settings Tabs
 
@@ -155,7 +155,7 @@ Some theme options are also available in **Appearance → Customize**:
 
 ## License
 
-FlexBase is released under the **GNU General Public License v2.0** (GPL v2).  
+WHS Frame is released under the **GNU General Public License v2.0** (GPL v2).  
 This means you are free to:
 - Use the theme on unlimited websites
 - Modify and customize the code
@@ -167,4 +167,4 @@ For full license details, see: [https://www.gnu.org/licenses/gpl-2.0.html](https
 
 **Theme Version:** 1.0.8  
 **Last Updated:** 2026-05-04  
-**Author:** FlexBase Theme Team
+**Author:** WHS Frame Theme Team

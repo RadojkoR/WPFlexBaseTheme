@@ -1,4 +1,4 @@
-/* FlexBase — main.css */
+/* WHS Frame — main.css */
 
 /* ── Reset ─────────────────────────────────────────────────────────────────── */
 *,
@@ -14,8 +14,8 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 	font-size: 1rem;
 	line-height: 1.6;
-	color: var(--flexbase-color-text, #1e1e2e);
-	background-color: var(--flexbase-color-background, #ffffff);
+	color: var(--whs-frame-color-text, #1e1e2e);
+	background-color: var(--whs-frame-color-background, #ffffff);
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -47,21 +47,21 @@ ol {
 	list-style: none;
 }
 
-/* ── FLEXBASE LAYOUT SYSTEM ────────────────────────────────────────────────── */
+/* ── WHS FRAME LAYOUT SYSTEM ────────────────────────────────────────────────── */
 
 /* Base wrapper (optional global structure) */
 .whs-frame-main {
 	width: 100%;
 }
 
-#flexbase-header-spacer {
+#whs-frame-header-spacer {
 	background: transparent;
 }
 
 /* Container system (core) */
 .container {
 	width: 100%;
-	max-width: var(--flexbase-container-width, 1200px);
+	max-width: var(--whs-frame-container-width, 1200px);
 	margin-left: auto;
 	margin-right: auto;
 	padding-left: 1rem;
@@ -72,7 +72,7 @@ ol {
 
 /* BOXED layout (default) */
 body.layout-boxed .container {
-	max-width: var(--flexbase-container-width, 1200px);
+	max-width: var(--whs-frame-container-width, 1200px);
 }
 
 /* FULL WIDTH layout */
@@ -90,7 +90,7 @@ body.layout-full .container {
 
 /* Elementor support — full width sections */
 .elementor-section.elementor-section-boxed > .elementor-container {
-	max-width: var(--flexbase-container-width, 1200px);
+	max-width: var(--whs-frame-container-width, 1200px);
 }
 
 body.layout-full .elementor-section.elementor-section-boxed > .elementor-container {

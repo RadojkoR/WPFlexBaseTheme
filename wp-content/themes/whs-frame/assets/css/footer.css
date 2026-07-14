@@ -1,11 +1,11 @@
-/* FlexBase — footer.css */
+/* WHS Frame — footer.css */
 
 /* ── Shell ───────────────────────────────────────────────────────────────────── */
 .whs-frame-footer {
 	padding-top: 0;
 	padding-bottom: 15px;
-	background-color: var(--flexbase-color-background, #ffffff);
-	color: var(--flexbase-color-text, #4b5563);
+	background-color: var(--whs-frame-color-background, #ffffff);
+	color: var(--whs-frame-color-text, #4b5563);
 	border-top: 1px solid #e5e7eb;
 	font-size: 0.9375rem;
 	line-height: 1.7;
@@ -20,7 +20,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
-	max-width: var(--flexbase-container-width, 1200px);
+	max-width: var(--whs-frame-container-width, 1200px);
 	margin: 0 auto;
 	padding: 0 1.5rem;
 }
@@ -62,7 +62,7 @@
 .whs-frame-footer__site-name {
 	font-size: 1.25rem;
 	font-weight: 700;
-	color: var(--flexbase-color-text, #1e1e2e);
+	color: var(--whs-frame-color-text, #1e1e2e);
 	text-decoration: none;
 }
 
@@ -184,7 +184,7 @@
 /* ── Copyright bar ───────────────────────────────────────────────────────────── */
 .whs-frame-footer__bar {
 	border-top: 1px solid #f3f4f6;
-	background-color: var(--flexbase-color-background, #f9fafb);
+	background-color: var(--whs-frame-color-background, #f9fafb);
 }
 
 .whs-frame-footer__bar-inner {
@@ -193,7 +193,7 @@
 	justify-content: center;
 	flex-direction: column;
 	gap: 0.5rem;
-	max-width: var(--flexbase-container-width, 1200px);
+	max-width: var(--whs-frame-container-width, 1200px);
 	margin: 0 auto;
 	padding: 0.75rem 1.5rem;
 }
@@ -213,7 +213,7 @@
 	list-style: none;
 	margin: 0 auto;
 	padding: 0;
-	max-width: var(--flexbase-container-width, 1200px);
+	max-width: var(--whs-frame-container-width, 1200px);
 }
 
 .whs-frame-footer__nav-menu a {

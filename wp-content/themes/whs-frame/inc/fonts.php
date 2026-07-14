@@ -59,7 +59,7 @@ function whs_frame_google_fonts_url() {
  * applies the chosen fonts to body text and headings.
  *
  * Runs at priority 20 (after whs_frame_enqueue_assets at priority 10) so that
- * wp_add_inline_style can attach to the already-registered flexbase-main handle.
+ * wp_add_inline_style can attach to the already-registered whs-frame-main handle.
  */
 function whs_frame_enqueue_google_fonts() {
 	$base    = whs_frame_opt( 'font_base',    'inherit' );
@@ -68,7 +68,7 @@ function whs_frame_enqueue_google_fonts() {
 	$url = whs_frame_google_fonts_url();
 	if ( $url ) {
 		// null version prevents WordPress from appending ?ver= to the Google Fonts URL.
-		wp_enqueue_style( 'flexbase-google-fonts', $url, [ 'flexbase-main' ], null );
+		wp_enqueue_style( 'whs-frame-google-fonts', $url, [ 'whs-frame-main' ], null );
 	}
 
 	// Build and attach the CSS that wires up the font-family values.
@@ -80,7 +80,7 @@ function whs_frame_enqueue_google_fonts() {
 		$css .= 'h1, h2, h3, h4, h5, h6 { font-family: ' . whs_frame_font_stack( $heading ) . '; }' . "\n";
 	}
 	if ( $css ) {
-		wp_add_inline_style( 'flexbase-main', $css );
+		wp_add_inline_style( 'whs-frame-main', $css );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'whs_frame_enqueue_google_fonts', 20 );

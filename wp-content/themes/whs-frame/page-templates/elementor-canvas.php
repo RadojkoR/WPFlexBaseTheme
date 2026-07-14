@@ -3,7 +3,7 @@
  * Template Name: Elementor Canvas
  * Template Post Type: page
  *
- * @package FlexBase
+ * @package WHS Frame
  */
 
 defined('ABSPATH') || exit;

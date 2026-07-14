@@ -13,11 +13,11 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="flexbase-comments">
+<div id="comments" class="whs-frame-comments">
 
 	<?php if ( have_comments() ) : ?>
 
-		<h2 class="flexbase-comments__title">
+		<h2 class="whs-frame-comments__title">
 			<?php
 			$whs_frame_comment_count = get_comments_number();
 			printf(
@@ -28,7 +28,7 @@ if ( post_password_required() ) {
 			?>
 		</h2>
 
-		<ol class="flexbase-comments__list">
+		<ol class="whs-frame-comments__list">
 			<?php
 			wp_list_comments( [
 				'style'      => 'ol',
@@ -45,7 +45,7 @@ if ( post_password_required() ) {
 		?>
 
 		<?php if ( ! comments_open() ) : ?>
-			<p class="flexbase-comments__closed"><?php esc_html_e( 'Comments are closed.', 'whs-frame' ); ?></p>
+			<p class="whs-frame-comments__closed"><?php esc_html_e( 'Comments are closed.', 'whs-frame' ); ?></p>
 		<?php endif; ?>
 
 	<?php endif; ?>

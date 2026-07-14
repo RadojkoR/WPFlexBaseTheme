@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Elementor compatibility for FlexBase.
+ * Elementor compatibility for WHS Frame.
  *
  * Handles:
  *  1. Theme support declaration
@@ -62,7 +62,7 @@ add_action( 'elementor/theme/register_locations', 'whs_frame_register_elementor_
  * Fires at priority 5 on 'whs_frame_header', before whs_frame_header_render (priority 10).
  *
  * Captures elementor_theme_do_location('header') output. If Elementor has a template
- * assigned to the header location it renders it; we wrap it in #flexbase-header-wrap
+ * assigned to the header location it renders it; we wrap it in #whs-frame-header-wrap
  * so sticky.js and transparent-header logic still function. If Elementor renders nothing
  * (no template assigned) we return early and let whs_frame_header_render run normally.
  */
@@ -87,16 +87,16 @@ function whs_frame_elementor_render_header_location() {
 		$sticky_mode = 'none';
 	}
 
-	$classes = [ 'flexbase-header-wrap', 'flexbase-header-wrap--elementor-location' ];
+	$classes = [ 'whs-frame-header-wrap', 'whs-frame-header-wrap--elementor-location' ];
 	if ( 'none' !== $sticky_mode ) {
-		$classes[] = 'flexbase-header-wrap--sticky';
+		$classes[] = 'whs-frame-header-wrap--sticky';
 	}
 	if ( $transparent ) {
-		$classes[] = 'flexbase-header-wrap--transparent';
+		$classes[] = 'whs-frame-header-wrap--transparent';
 	}
 
 	printf(
-		'<div id="flexbase-header-wrap" class="%s" data-sticky="%s"%s>%s</div>',
+		'<div id="whs-frame-header-wrap" class="%s" data-sticky="%s"%s>%s</div>',
 		esc_attr( implode( ' ', $classes ) ),
 		esc_attr( $sticky_mode ),
 		$transparent ? ' data-transparent="true"' : '',
@@ -131,7 +131,7 @@ function whs_frame_elementor_render_footer_location() {
 	}
 
 	printf(
-		'<div class="flexbase-footer-wrap flexbase-footer-wrap--elementor-location">%s</div>',
+		'<div class="whs-frame-footer-wrap whs-frame-footer-wrap--elementor-location">%s</div>',
 		$content // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped — sanitised by Elementor
 	);
 
@@ -201,18 +201,18 @@ add_action( 'elementor_pro/init', 'whs_frame_disable_elementor_conflicting_rende
  * Add informational body classes when Elementor is active.
  * Useful for CSS targeting and debugging.
  *
- *  flexbase-elementor-active    — Elementor plugin is active.
- *  flexbase-elementor-locations — Elementor Pro Theme Location API is available.
+ *  whs-frame-elementor-active    — Elementor plugin is active.
+ *  whs-frame-elementor-locations — Elementor Pro Theme Location API is available.
  */
 function whs_frame_elementor_body_classes( $classes ) {
 	if ( ! whs_frame_is_elementor_active() ) {
 		return $classes;
 	}
 
-	$classes[] = 'flexbase-elementor-active';
+	$classes[] = 'whs-frame-elementor-active';
 
 	if ( function_exists( 'elementor_theme_do_location' ) ) {
-		$classes[] = 'flexbase-elementor-locations';
+		$classes[] = 'whs-frame-elementor-locations';
 	}
 
 	return $classes;
@@ -223,7 +223,7 @@ add_filter( 'body_class', 'whs_frame_elementor_body_classes' );
 
 /**
  * Normalise Elementor's section/container margins inside our header and footer
- * wrappers to prevent layout shifts. Inlined onto flexbase-main to avoid an
+ * wrappers to prevent layout shifts. Inlined onto whs-frame-main to avoid an
  * extra HTTP request.
  */
 function whs_frame_elementor_enqueue_styles() {
@@ -232,20 +232,20 @@ function whs_frame_elementor_enqueue_styles() {
 	}
 
 	$inline_css = '
-		#flexbase-header-wrap .elementor-section-wrap,
-		#flexbase-header-wrap > .elementor,
+		#whs-frame-header-wrap .elementor-section-wrap,
+		#whs-frame-header-wrap > .elementor,
 		.whs-frame-footer-wrap .elementor-section-wrap,
 		.whs-frame-footer-wrap > .elementor {
 			width: 100%;
 			margin: 0;
 		}
-		#flexbase-header-wrap .elementor-section,
+		#whs-frame-header-wrap .elementor-section,
 		.whs-frame-footer-wrap .elementor-section {
 			margin-top: 0;
 			margin-bottom: 0;
 		}
 	';
 
-	wp_add_inline_style( 'flexbase-main', $inline_css );
+	wp_add_inline_style( 'whs-frame-main', $inline_css );
 }
 add_action( 'wp_enqueue_scripts', 'whs_frame_elementor_enqueue_styles', 20 );

@@ -1,4 +1,4 @@
-/* FlexBase — sticky.css */
+/* WHS Frame — sticky.css */
 
 /* ── Sticky wrapper ──────────────────────────────────────────────────────────── */
 .whs-frame-header-wrap--sticky {
@@ -44,23 +44,23 @@
 
 .whs-frame-header-wrap--transparent .whs-frame-header__site-name,
 .whs-frame-header-wrap--transparent .whs-frame-header__nav .whs-frame-nav__menu li a {
-	color: var(--flexbase-transp-text, #ffffff);
+	color: var(--whs-frame-transp-text, #ffffff);
 	transition: color 0.3s ease;
 }
 
 .whs-frame-header-wrap--transparent .whs-frame-header__nav .whs-frame-nav__menu li.current-menu-item > a,
 .whs-frame-header-wrap--transparent .whs-frame-header__nav .whs-frame-nav__menu li.current_page_item > a {
-	color: var(--flexbase-transp-active, #ffffff);
+	color: var(--whs-frame-transp-active, #ffffff);
 }
 
 .whs-frame-header-wrap--transparent .whs-frame-header__hamburger-bar {
-	background-color: var(--flexbase-transp-text, #ffffff);
+	background-color: var(--whs-frame-transp-text, #ffffff);
 	transition: background-color 0.3s ease, transform 0.25s ease, opacity 0.25s ease;
 }
 
 .whs-frame-header-wrap--transparent .whs-frame-header__nav .whs-frame-nav__menu li a:hover {
 	background-color: rgba(255, 255, 255, 0.15);
-	color: var(--flexbase-transp-hover, #ffffff);
+	color: var(--whs-frame-transp-hover, #ffffff);
 }
 
 .whs-frame-header-wrap--transparent .whs-frame-header__hamburger:hover {
@@ -68,25 +68,25 @@
 }
 
 .whs-frame-header-wrap--transparent.is-scrolled .whs-frame-header {
-	background-color: var(--flexbase-header-bg, #ffffff);
+	background-color: var(--whs-frame-header-bg, #ffffff);
 	border-bottom-color: #e5e7eb;
 	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .whs-frame-header-wrap--transparent.is-scrolled .whs-frame-header__site-name,
 .whs-frame-header-wrap--transparent.is-scrolled .whs-frame-header__nav .whs-frame-nav__menu li a {
-	color: var(--flexbase-header-text, #1e1e2e);
+	color: var(--whs-frame-header-text, #1e1e2e);
 }
 
 .whs-frame-header-wrap--transparent.is-scrolled .whs-frame-header__nav .whs-frame-nav__menu li a:hover {
-	color: var(--flexbase-nav-hover, var(--flexbase-color-primary, #6366f1));
+	color: var(--whs-frame-nav-hover, var(--whs-frame-color-primary, #6366f1));
 }
 
 .whs-frame-header-wrap--transparent.is-scrolled .whs-frame-header__nav .whs-frame-nav__menu li.current-menu-item > a,
 .whs-frame-header-wrap--transparent.is-scrolled .whs-frame-header__nav .whs-frame-nav__menu li.current_page_item > a {
-	color: var(--flexbase-nav-active, var(--flexbase-color-primary, #6366f1));
+	color: var(--whs-frame-nav-active, var(--whs-frame-color-primary, #6366f1));
 }
 
 .whs-frame-header-wrap--transparent.is-scrolled .whs-frame-header__hamburger-bar {
-	background-color: var(--flexbase-header-text, #1e1e2e);
+	background-color: var(--whs-frame-header-text, #1e1e2e);
 }
