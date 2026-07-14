@@ -5,8 +5,9 @@
 	'use strict';
 
 	document.addEventListener( 'DOMContentLoaded', function () {
-		var wrap   = document.getElementById( 'whs-frame-header-wrap' );
-		var topbar = document.getElementById( 'whs-frame-topbar' );
+		var wrap    = document.getElementById( 'whs-frame-header-wrap' );
+		var topbar  = document.getElementById( 'whs-frame-topbar' );
+		var spacer  = document.getElementById( 'whs-frame-header-spacer' );
 
 		if ( ! wrap ) {
 			return;
@@ -24,6 +25,23 @@
 		// ── Topbar height helper ──────────────────────────────────────────────
 		function getTopbarHeight() {
 			return ( topbar && topbar.offsetParent !== null ) ? topbar.offsetHeight : 0;
+		}
+
+		// ── Spacer: reserves in-flow space equal to the fixed header's height ──
+		// Transparent headers stay at 0 — they're meant to float over hero content.
+		function syncSpacerHeight() {
+			if ( ! spacer ) {
+				return;
+			}
+			spacer.style.height = transparent ? '0px' : wrap.offsetHeight + 'px';
+		}
+
+		syncSpacerHeight();
+		window.addEventListener( 'load', syncSpacerHeight );
+		window.addEventListener( 'resize', syncSpacerHeight );
+
+		if ( window.ResizeObserver ) {
+			new ResizeObserver( syncSpacerHeight ).observe( wrap );
 		}
 
 		// ── Scroll handler ────────────────────────────────────────────────────
