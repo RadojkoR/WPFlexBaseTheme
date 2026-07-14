@@ -11,6 +11,7 @@ A powerful, modern WordPress theme designed for flexibility and ease of use. Bui
 - **Language Switcher** — Native support for Polylang and WPML language switching
 - **Elementor Pro Integration** — Full Theme Locations API support for custom headers and footers
 - **Bricks Builder Integration** — Complete Bricks Builder theme locations support
+- **Blog Post Template** — Fully styled single post layout: category badges, author/date/reading-time meta, featured image, tags, author bio, prev/next navigation, and a styled comments section with reply form
 - **Gutenberg Compatibility** — Full-width template and responsive design
 - **React Admin Panel** — Modern settings interface with visual theme presets
 - **Multiple Presets** — Light and Dark theme presets with one-click switching

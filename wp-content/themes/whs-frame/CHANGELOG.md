@@ -5,6 +5,32 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-07-14
+
+### Added
+- **Single post template** (`single.php`) — the theme finally has a designed
+  blog post layout: category badges, title, author avatar/date/reading-time/
+  comment-count meta bar, featured image, prose-styled content (headings,
+  blockquotes, code, tables), tag list, author bio box and prev/next post
+  navigation. Styled in `assets/css/single.css` using the theme's CSS
+  variable system, so it follows the active preset/brand colors.
+- Comments are now actually displayed: `single.php` calls
+  `comments_template()` (the `comments.php` template existed since 1.0.9 but
+  no blog template ever invoked it), with full styling for the comment list,
+  threaded replies and the reply form.
+- `single.css` loads on all singular content (`is_singular()`), so comments
+  rendered by the Full Width / Gutenberg page templates are styled too.
+
+### Fixed
+- **Sticky header no longer overlaps page content.** The
+  `#whs-frame-header-spacer` CSS rule existed since 1.0.0 but no PHP or JS
+  ever rendered that element, so a fixed (sticky) header covered the top of
+  every page. A renderer-agnostic spacer is now output on
+  `whs_frame_after_header` (covers default, Elementor and Bricks headers)
+  and sized live by `sticky.js` via ResizeObserver + load/resize listeners.
+  Transparent headers intentionally keep the spacer at 0 height — they are
+  designed to float over hero content.
+
 ## [1.2.1] - 2026-07-14
 
 ### Changed

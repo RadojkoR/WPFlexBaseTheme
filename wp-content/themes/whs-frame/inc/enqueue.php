@@ -17,7 +17,8 @@ function whs_frame_enqueue_assets() {
 	wp_enqueue_style( 'whs-frame-sticky', $css . 'sticky.css', [], $ver );
 	wp_enqueue_style( 'whs-frame-footer', $css . 'footer.css', [], $ver );
 
-	if ( is_singular( 'post' ) ) {
+	// Post layout + comment styling; pages need it too (page templates call comments_template()).
+	if ( is_singular() ) {
 		wp_enqueue_style( 'whs-frame-single', $css . 'single.css', [ 'whs-frame-main' ], $ver );
 	}
 
