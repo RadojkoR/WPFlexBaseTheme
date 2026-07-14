@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   the modes were relying on inherited centering from `.container` rather
   than asserting it directly.
 
+### Changed
+- Added top margin above the "Custom Width" slider so it doesn't crowd the
+  Content Layout dropdown above it when it appears.
+
 ## [1.4.1] - 2026-07-14
 
 ### Added

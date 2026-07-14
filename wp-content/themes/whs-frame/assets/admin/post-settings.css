@@ -35,6 +35,10 @@
 	margin-bottom: 0;
 }
 
+.whs-frame-doc-panel .components-range-control {
+	margin-top: 16px;
+}
+
 .whs-frame-doc-panel .components-base-control__label,
 .whs-frame-doc-panel .components-select-control__label,
 .whs-frame-doc-panel .components-input-control__label,
