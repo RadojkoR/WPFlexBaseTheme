@@ -10,8 +10,12 @@ function whs_frame_is_elementor_active() {
 // ─── Main Render ──────────────────────────────────────────────────────────────
 
 function whs_frame_header_render() {
+	if ( whs_frame_post_disabled( '_whs_frame_disable_header' ) ) {
+		return;
+	}
+
 	$sticky_mode = sanitize_key( get_theme_mod( 'whs_frame_header_sticky', 'none' ) );
-	$transparent = (bool) get_theme_mod( 'whs_frame_header_transparent', false );
+	$transparent = whs_frame_get_transparent_header( (bool) get_theme_mod( 'whs_frame_header_transparent', false ) );
 
 	$allowed_sticky = [ 'none', 'always', 'scroll_up' ];
 	if ( ! in_array( $sticky_mode, $allowed_sticky, true ) ) {
@@ -51,8 +55,12 @@ add_action( 'whs_frame_header', 'whs_frame_header_render' );
  * meant to float over hero content); sticky-only headers get the wrap's height.
  */
 function whs_frame_header_spacer_render() {
+	if ( whs_frame_post_disabled( '_whs_frame_disable_header' ) ) {
+		return;
+	}
+
 	$sticky_mode = sanitize_key( get_theme_mod( 'whs_frame_header_sticky', 'none' ) );
-	$transparent = (bool) get_theme_mod( 'whs_frame_header_transparent', false );
+	$transparent = whs_frame_get_transparent_header( (bool) get_theme_mod( 'whs_frame_header_transparent', false ) );
 
 	$allowed_sticky = [ 'none', 'always', 'scroll_up' ];
 	if ( ! in_array( $sticky_mode, $allowed_sticky, true ) ) {
@@ -70,6 +78,10 @@ add_action( 'whs_frame_after_header', 'whs_frame_header_spacer_render' );
 // ─── Default Footer Render ────────────────────────────────────────────────────
 
 function whs_frame_default_footer_render() {
+	if ( whs_frame_post_disabled( '_whs_frame_disable_footer' ) ) {
+		return;
+	}
+
 	get_template_part( 'template-parts/default-footer' );
 }
 add_action( 'whs_frame_footer', 'whs_frame_default_footer_render', 10 );

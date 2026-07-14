@@ -5,6 +5,27 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-07-14
+
+### Added
+- **Per-post "WHS Frame Settings" panel** in the block editor sidebar
+  (`inc/post-settings.php` + `assets/admin/post-settings.js`), similar to
+  Astra's per-post settings panel:
+  - Disable Title, Disable Featured Image, Disable Header, Disable Footer
+    (checkboxes)
+  - Transparent Header (Customizer Setting / Enable / Disable) — overrides
+    the site-wide Customizer default for that specific post/page
+  - Implemented with `register_post_meta()` (5 fields, `show_in_rest`) and a
+    `PluginDocumentSettingPanel` registered via `wp.plugins.registerPlugin`
+  - `single.php` re-gained a featured image block (width-contained to the
+    76ch content column, 420px max-height), now shown by default and
+    controllable per post via the new panel
+  - `whs_frame_header_render()`, `whs_frame_header_spacer_render()` and
+    `whs_frame_default_footer_render()` (`inc/header-builder.php`) all
+    respect the new `_whs_frame_disable_header` / `_whs_frame_disable_footer`
+    / `_whs_frame_transparent_header` post meta via two new helpers,
+    `whs_frame_post_disabled()` and `whs_frame_get_transparent_header()`
+
 ## [1.3.7] - 2026-07-14
 
 ### Removed

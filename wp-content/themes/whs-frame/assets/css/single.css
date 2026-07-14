@@ -81,6 +81,24 @@
 	border-radius: 50%;
 }
 
+/* ── Featured image ───────────────────────────────────────────────────────── */
+/* Matches the content column width instead of the full container — a
+   full-bleed featured image reads as oversized/dominant on a text-first post.
+   Editors can turn it off per post/page via WHS Frame Settings in the editor. */
+.whs-frame-post__thumbnail {
+	max-width: 76ch;
+	margin: 2rem auto;
+	border-radius: 12px;
+	overflow: hidden;
+}
+
+.whs-frame-post__thumbnail img {
+	width: 100%;
+	max-height: 420px;
+	object-fit: cover;
+	display: block;
+}
+
 /* ── Content / prose typography ──────────────────────────────────────────── */
 .whs-frame-post__content {
 	max-width: 76ch;

@@ -28,7 +28,9 @@ while ( have_posts() ) :
 					</div>
 				<?php endif; ?>
 
-				<h1 class="whs-frame-post__title"><?php the_title(); ?></h1>
+				<?php if ( ! whs_frame_post_disabled( '_whs_frame_disable_title' ) ) : ?>
+					<h1 class="whs-frame-post__title"><?php the_title(); ?></h1>
+				<?php endif; ?>
 
 				<div class="whs-frame-post__meta">
 					<span class="whs-frame-post__meta-item whs-frame-post__author">
@@ -71,6 +73,12 @@ while ( have_posts() ) :
 				</div>
 
 			</header>
+
+			<?php if ( has_post_thumbnail() && ! whs_frame_post_disabled( '_whs_frame_disable_featured_image' ) ) : ?>
+				<div class="whs-frame-post__thumbnail">
+					<?php the_post_thumbnail( 'large' ); ?>
+				</div>
+			<?php endif; ?>
 
 			<div class="whs-frame-post__content">
 				<?php

@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-define( 'WHS_FRAME_VERSION', '1.3.7' );
+define( 'WHS_FRAME_VERSION', '1.4.0' );
 define( 'WHS_FRAME_DIR',     get_template_directory() );
 define( 'WHS_FRAME_URI',     get_template_directory_uri() );
 define( 'WHS_FRAME_INC',     WHS_FRAME_DIR . '/inc/' );
@@ -125,6 +125,7 @@ require_once WHS_FRAME_INC . 'enqueue.php';
 require_once WHS_FRAME_INC . 'css-vars.php';
 require_once WHS_FRAME_INC . 'fonts.php';
 require_once WHS_FRAME_INC . 'customizer.php';
+require_once WHS_FRAME_INC . 'post-settings.php';
 require_once WHS_FRAME_INC . 'topbar.php';
 require_once WHS_FRAME_INC . 'header-builder.php';
 require_once WHS_FRAME_INC . 'elementor-compatibility.php';
