@@ -4,10 +4,36 @@
 ( function () {
 	'use strict';
 
+	var STORAGE_KEY = 'flexbase-topbar-dismissed';
+
+	function isDismissed() {
+		try {
+			return window.localStorage.getItem( STORAGE_KEY ) === '1';
+		} catch ( err ) {
+			return false;
+		}
+	}
+
+	function rememberDismissed() {
+		try {
+			window.localStorage.setItem( STORAGE_KEY, '1' );
+		} catch ( err ) {
+			// localStorage unavailable — dismiss lasts for this page view only.
+		}
+	}
+
 	document.addEventListener( 'DOMContentLoaded', function () {
 		var topbar = document.getElementById( 'flexbase-topbar' );
 
 		if ( ! topbar || topbar.getAttribute( 'data-dismissible' ) !== 'true' ) {
+			return;
+		}
+
+		// Dismissed on a previous visit — remove immediately, no animation.
+		if ( isDismissed() ) {
+			if ( topbar.parentNode ) {
+				topbar.parentNode.removeChild( topbar );
+			}
 			return;
 		}
 
@@ -17,6 +43,7 @@
 		}
 
 		closeBtn.addEventListener( 'click', function () {
+			rememberDismissed();
 			topbar.classList.add( 'flexbase-topbar--dismissed' );
 
 			// Remove from DOM after transition so it no longer occupies space.
