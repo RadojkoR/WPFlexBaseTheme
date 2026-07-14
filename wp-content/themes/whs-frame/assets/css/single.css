@@ -63,8 +63,21 @@ body.whs-frame-layout--full-width-stretched .whs-frame-comments {
 
 /* Custom — exact percentage set per post; the width itself is applied via a
    tiny inline <style> in wp_head (inc/post-settings.php) since it's a
-   user-entered number, but centering lives here for consistency. */
+   user-entered number, but centering lives here for consistency. The inner
+   content also widens to fill it — otherwise only the title/meta (direct
+   children of .whs-frame-post) would follow the custom width while the
+   body text and images stayed clamped at the 76ch reading column below. */
 body.whs-frame-layout--custom .whs-frame-post {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body.whs-frame-layout--custom .whs-frame-post__content,
+body.whs-frame-layout--custom .whs-frame-post__tags,
+body.whs-frame-layout--custom .whs-frame-post__author-box,
+body.whs-frame-layout--custom .whs-frame-post .nav-links,
+body.whs-frame-layout--custom .whs-frame-comments {
+	max-width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -214,6 +227,40 @@ body.whs-frame-layout--custom .whs-frame-post {
 .whs-frame-post__content img,
 .whs-frame-post__content figure {
 	border-radius: 8px;
+}
+
+/* Default: an image/figure narrower than the column centers itself, since
+   a plain block-level <img> otherwise sits flush against the left edge. */
+.whs-frame-post__content img,
+.whs-frame-post__content > figure,
+.whs-frame-post__content > .wp-block-image {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* WordPress core alignment classes — the theme never styled these before,
+   so left/right/center-aligned images in the block editor all rendered
+   identically (centered, full column width). */
+.whs-frame-post__content .alignleft {
+	float: left;
+	margin: 0.4em 1.5em 1em 0;
+}
+
+.whs-frame-post__content .alignright {
+	float: right;
+	margin: 0.4em 0 1em 1.5em;
+}
+
+.whs-frame-post__content .aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	float: none;
+}
+
+.whs-frame-post__content .alignwide,
+.whs-frame-post__content .alignfull {
+	max-width: 100%;
 }
 
 .whs-frame-post__content figcaption {

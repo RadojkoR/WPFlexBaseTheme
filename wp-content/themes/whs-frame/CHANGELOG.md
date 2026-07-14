@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.4.2] - 2026-07-14
 
+### Fixed
+- Custom Width (and Full Width/Stretched) only widened `.whs-frame-post`
+  (the outer article, direct parent of the title/meta) — the inner
+  `.whs-frame-post__content`, tags, author box and comments kept their own
+  76ch reading-column cap regardless, so only the title/meta followed the
+  chosen width while paragraphs and images stayed narrower. Both modes now
+  widen the inner content to match.
+- Images inside post content had no centering — a block-level `<img>`
+  narrower than its column sits flush left by default, so any image not
+  using WordPress's `aligncenter` class rendered off to the left. Content
+  images now center by default; added real support for WordPress's core
+  `alignleft` / `alignright` / `aligncenter` / `alignwide` / `alignfull`
+  classes, which this theme never styled at all before.
+
 ### Added
 - **Custom Width** option in Content Layout (`_whs_frame_content_custom_width`
   post meta, 20–100%, default 80): a `RangeControl` slider appears in the
