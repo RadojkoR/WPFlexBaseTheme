@@ -8,6 +8,51 @@
 	padding-bottom: 3rem;
 }
 
+/* ── Content Layout overrides (per-post, via WHS Frame Settings panel) ──────
+   Default (no body class) = the normal .container + 76ch content behavior
+   already in place below. */
+
+/* Boxed — the article reads as a card floating on the page background. */
+body.whs-frame-layout--boxed .whs-frame-post {
+	max-width: calc(var(--whs-frame-container-width, 1200px) - 4rem);
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2rem;
+	padding: 3rem;
+	background: var(--whs-frame-color-background, #ffffff);
+	border-radius: 16px;
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Content Boxed — same as the default contained layout; kept as an explicit,
+   real option rather than a no-op so switching back to it is meaningful. */
+body.whs-frame-layout--content-boxed .whs-frame-post {
+	max-width: var(--whs-frame-container-width, 1200px);
+}
+
+/* Full Width/Contained — the article spans the full viewport, but body text
+   keeps its readable-width column. */
+body.whs-frame-layout--full-width-contained .whs-frame-post {
+	max-width: 100%;
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+/* Full Width/Stretched — nothing is constrained, text runs edge to edge. */
+body.whs-frame-layout--full-width-stretched .whs-frame-post {
+	max-width: 100%;
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+body.whs-frame-layout--full-width-stretched .whs-frame-post__content,
+body.whs-frame-layout--full-width-stretched .whs-frame-post__tags,
+body.whs-frame-layout--full-width-stretched .whs-frame-post__author-box,
+body.whs-frame-layout--full-width-stretched .whs-frame-post .nav-links,
+body.whs-frame-layout--full-width-stretched .whs-frame-comments {
+	max-width: 100%;
+}
+
 /* ── Header: categories, title, meta ─────────────────────────────────────── */
 .whs-frame-post__categories {
 	display: flex;

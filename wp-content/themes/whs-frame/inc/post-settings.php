@@ -41,8 +41,30 @@ function whs_frame_register_post_meta() {
 			return current_user_can( 'edit_posts' );
 		},
 	] );
+
+	register_post_meta( '', '_whs_frame_content_layout', [
+		'show_in_rest'      => true,
+		'single'            => true,
+		'type'              => 'string',
+		'default'           => '',
+		'sanitize_callback' => 'whs_frame_sanitize_content_layout',
+		'auth_callback'     => function () {
+			return current_user_can( 'edit_posts' );
+		},
+	] );
 }
 add_action( 'init', 'whs_frame_register_post_meta' );
+
+/**
+ * Allowed values for the per-post Content Layout override.
+ *
+ * @param  string $value Raw value.
+ * @return string
+ */
+function whs_frame_sanitize_content_layout( $value ) {
+	$allowed = [ 'boxed', 'content-boxed', 'full-width-contained', 'full-width-stretched' ];
+	return in_array( $value, $allowed, true ) ? $value : '';
+}
 
 // ─── Read Helpers ────────────────────────────────────────────────────────────
 
@@ -78,6 +100,30 @@ function whs_frame_get_transparent_header( $default ) {
 	}
 	return $default;
 }
+
+// ─── Content Layout Body Class ───────────────────────────────────────────────
+
+/**
+ * Adds a `whs-frame-layout--{mode}` body class when the current singular
+ * post/page has a Content Layout override set. No class is added for the
+ * default "Customizer Setting" (empty) value.
+ *
+ * @param  string[] $classes Existing body classes.
+ * @return string[]
+ */
+function whs_frame_content_layout_body_class( $classes ) {
+	if ( ! is_singular() ) {
+		return $classes;
+	}
+
+	$layout = get_post_meta( get_queried_object_id(), '_whs_frame_content_layout', true );
+	if ( $layout ) {
+		$classes[] = 'whs-frame-layout--' . $layout;
+	}
+
+	return $classes;
+}
+add_filter( 'body_class', 'whs_frame_content_layout_body_class' );
 
 // ─── Editor Panel Assets ─────────────────────────────────────────────────────
 

@@ -41,6 +41,20 @@
 				title: __( 'WHS Frame Settings', 'whs-frame' ),
 				className: 'whs-frame-doc-panel',
 			},
+			h( 'div', { className: 'whs-frame-doc-panel__group' },
+				h( SelectControl, {
+					label: __( 'Content Layout', 'whs-frame' ),
+					value: meta._whs_frame_content_layout || '',
+					options: [
+						{ label: __( 'Customizer Setting', 'whs-frame' ), value: '' },
+						{ label: __( 'Boxed', 'whs-frame' ), value: 'boxed' },
+						{ label: __( 'Content Boxed', 'whs-frame' ), value: 'content-boxed' },
+						{ label: __( 'Full Width/Contained', 'whs-frame' ), value: 'full-width-contained' },
+						{ label: __( 'Full Width/Stretched', 'whs-frame' ), value: 'full-width-stretched' },
+					],
+					onChange: function ( v ) { setMeta( '_whs_frame_content_layout', v ); },
+				} )
+			),
 			h( 'p', { className: 'whs-frame-doc-panel__heading' }, __( 'Disable Sections', 'whs-frame' ) ),
 			h( 'div', { className: 'whs-frame-doc-panel__group' },
 				h( CheckboxControl, {

@@ -5,6 +5,27 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-07-14
+
+### Added
+- **Content Layout** control in the WHS Frame Settings editor panel (matches
+  the Astra field of the same name): Customizer Setting / Boxed / Content
+  Boxed / Full Width Contained / Full Width Stretched, per post/page.
+  - New `_whs_frame_content_layout` post meta, sanitized to the 4 known
+    values (`whs_frame_sanitize_content_layout()` in `inc/post-settings.php`)
+  - A `body_class` filter adds `whs-frame-layout--{mode}` when set, and
+    `single.css` implements the 4 modes by adjusting `.whs-frame-post`'s
+    max-width/padding (Boxed also gets a card background + shadow)
+  - Scoped to the post/page content area (not header/footer) — a full
+    site-wide "Boxed" mode wrapping header+content+footer together, like
+    Astra's most dramatic variant, was out of scope for this pass
+
+### Note
+- Astra's "Sidebar" field (Left/Right/No Sidebar) was intentionally not
+  added — it requires a real widget-area system (`register_sidebar()`,
+  two-column templates) that doesn't exist in this theme yet. Deferred to a
+  future session so it isn't half-built.
+
 ## [1.4.1] - 2026-07-14
 
 ### Changed
