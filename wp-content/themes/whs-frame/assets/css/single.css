@@ -1,8 +1,10 @@
 /* WHS Frame — single.css (single blog post) */
 
 /* ── Post wrapper ──────────────────────────────────────────────────────────── */
+/* Extra top padding clears the topbar + transparent/sticky header, which have
+   no reserved space in the document flow by design (they float over content). */
 .whs-frame-post {
-	padding-top: 2.5rem;
+	padding-top: 10rem;
 	padding-bottom: 3rem;
 }
 
@@ -481,7 +483,7 @@
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
 	.whs-frame-post {
-		padding-top: 1.5rem;
+		padding-top: 8rem;
 	}
 
 	.whs-frame-post__meta {
