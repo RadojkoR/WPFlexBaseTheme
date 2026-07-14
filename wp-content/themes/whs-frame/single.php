@@ -72,12 +72,6 @@ while ( have_posts() ) :
 
 			</header>
 
-			<?php if ( has_post_thumbnail() ) : ?>
-				<div class="whs-frame-post__thumbnail">
-					<?php the_post_thumbnail( 'large' ); ?>
-				</div>
-			<?php endif; ?>
-
 			<div class="whs-frame-post__content">
 				<?php
 				the_content();
