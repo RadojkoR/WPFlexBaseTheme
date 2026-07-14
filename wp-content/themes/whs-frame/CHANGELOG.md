@@ -5,6 +5,14 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.2] - 2026-07-14
+
+### Note
+- Guest commenting works as intended without an account (e.g. Astra-style):
+  controlled entirely by the WordPress core `comment_registration` site
+  option (Settings → Discussion), not a theme setting — the theme just calls
+  the standard `comment_form()`, which already respects it.
+
 ## [1.3.1] - 2026-07-14
 
 ### Changed
@@ -12,11 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   10rem/8rem desktop/mobile) so post title/category clear the topbar +
   transparent/sticky header, which intentionally has no reserved spacer
   (floats over content by design).
-
-### Note
-- Guest commenting confirmed working as intended (WP core `comment_registration`
-  site option, not a theme setting): visitors can post comments without an
-  account, matching standard theme behavior (e.g. Astra).
 
 ## [1.3.0] - 2026-07-14
 
