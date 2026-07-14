@@ -26,5 +26,10 @@ function whs_frame_enqueue_assets() {
 	wp_enqueue_script( 'whs-frame-main',   $js . 'main.js',   [], $ver, true );
 	wp_enqueue_script( 'whs-frame-sticky', $js . 'sticky.js', [], $ver, true );
 	wp_enqueue_script( 'whs-frame-topbar', $js . 'topbar.js', [], $ver, true );
+
+	// WP core script that moves the comment form under the comment being replied to.
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'whs_frame_enqueue_assets', 20 );

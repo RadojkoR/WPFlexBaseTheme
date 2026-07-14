@@ -5,6 +5,16 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.3] - 2026-07-14
+
+### Fixed
+- Clicking "Reply" on a comment now actually moves the comment form under
+  that comment, as expected. The theme never enqueued WordPress core's
+  `comment-reply` script — without it, the reply links had no JS behind
+  them. Enqueued conditionally in `inc/enqueue.php`
+  (`is_singular() && comments_open() && get_option( 'thread_comments' )`),
+  matching core theme conventions.
+
 ## [1.3.2] - 2026-07-14
 
 ### Note
