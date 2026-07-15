@@ -1,105 +1,92 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+// ─── Local Font Registry ────────────────────────────────────────────────────
+
+/**
+ * Self-hosted font files (assets/webfonts/google/) and the weights actually
+ * available for each family. No external requests — required for
+ * WordPress.org (Google Fonts CDN loading is not allowed since 2022).
+ */
+function whs_frame_local_fonts() {
+	return [
+		'Inter'             => [ 'slug' => 'inter',             'weights' => [ 300, 400, 500, 600, 700, 800, 900 ], 'serif' => false ],
+		'Poppins'           => [ 'slug' => 'poppins',           'weights' => [ 300, 400, 500, 600, 700, 800, 900 ], 'serif' => false ],
+		'Montserrat'        => [ 'slug' => 'montserrat',        'weights' => [ 300, 400, 500, 600, 700, 800, 900 ], 'serif' => false ],
+		'Playfair Display'  => [ 'slug' => 'playfair-display',  'weights' => [ 400, 500, 600, 700, 800, 900 ],      'serif' => true ],
+		'Merriweather'      => [ 'slug' => 'merriweather',      'weights' => [ 300, 400, 700, 900 ],                'serif' => true ],
+		'Lora'              => [ 'slug' => 'lora',              'weights' => [ 400, 500, 600, 700 ],                'serif' => true ],
+	];
+}
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 /**
- * Returns font family names that are serif (used to pick the correct generic fallback).
- */
-function whs_frame_serif_fonts() {
-	return [ 'Playfair Display', 'Merriweather', 'Lora', 'PT Serif', 'Cormorant Garamond', 'Crimson Text', 'DM Serif Display' ];
-}
-
-/**
- * Returns a complete font-family stack for a given Google Font name.
+ * Returns a complete font-family stack for a given font name.
  * Appends a suitable generic family so the browser always has a fallback.
  */
 function whs_frame_font_stack( $font ) {
-	if ( in_array( $font, whs_frame_serif_fonts(), true ) ) {
+	$fonts = whs_frame_local_fonts();
+	$serif = isset( $fonts[ $font ] ) && $fonts[ $font ]['serif'];
+
+	if ( $serif ) {
 		return '"' . $font . '", Georgia, "Times New Roman", serif';
 	}
 	return '"' . $font . '", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
 }
 
 /**
- * Builds a Google Fonts CSS2 API URL for the currently selected base and heading fonts.
- * Returns an empty string when both settings are 'inherit' (no external font needed).
- *
- * Single request for up to 2 families: fonts.googleapis.com/css2?family=A&family=B&display=swap
+ * Builds @font-face rules for one local font family, one per available weight.
  */
-function whs_frame_google_fonts_url() {
-	$base    = whs_frame_opt( 'font_base',    'inherit' );
-	$heading = whs_frame_opt( 'font_heading', 'inherit' );
-
-	// Collect unique font names that are not the system font.
-	$fonts = [];
-	if ( 'inherit' !== $base ) {
-		$fonts[] = $base;
-	}
-	if ( 'inherit' !== $heading && ! in_array( $heading, $fonts, true ) ) {
-		$fonts[] = $heading;
-	}
-
-	if ( empty( $fonts ) ) {
+function whs_frame_font_face_css( $font ) {
+	$fonts = whs_frame_local_fonts();
+	if ( ! isset( $fonts[ $font ] ) ) {
 		return '';
 	}
 
-	// Build family params: spaces → +, request weights 300–700.
-	$families = array_map( function ( $font ) {
-		return 'family=' . str_replace( ' ', '+', $font ) . ':wght@300;400;500;600;700';
-	}, $fonts );
+	$data = $fonts[ $font ];
+	$css  = '';
 
-	return 'https://fonts.googleapis.com/css2?' . implode( '&', $families ) . '&display=swap';
+	foreach ( $data['weights'] as $weight ) {
+		$url = esc_url( WHS_FRAME_ASSETS . 'webfonts/google/' . $data['slug'] . '-' . $weight . '.woff2' );
+		$css .= "@font-face{font-family:'" . esc_attr( $font ) . "';font-style:normal;font-weight:{$weight};font-display:swap;src:url('{$url}') format('woff2');}\n";
+	}
+
+	return $css;
 }
 
 // ─── Enqueue ──────────────────────────────────────────────────────────────────
 
 /**
- * Enqueues the Google Fonts stylesheet and injects a small inline style that
- * applies the chosen fonts to body text and headings.
+ * Injects @font-face rules for the selected fonts plus the body/heading
+ * font-family CSS. Fully self-hosted — no external requests.
  *
  * Runs at priority 20 (after whs_frame_enqueue_assets at priority 10) so that
  * wp_add_inline_style can attach to the already-registered whs-frame-main handle.
  */
-function whs_frame_enqueue_google_fonts() {
+function whs_frame_enqueue_local_fonts() {
 	$base    = whs_frame_opt( 'font_base',    'inherit' );
 	$heading = whs_frame_opt( 'font_heading', 'inherit' );
+	$fonts   = whs_frame_local_fonts();
 
-	$url = whs_frame_google_fonts_url();
-	if ( $url ) {
-		// null version prevents WordPress from appending ?ver= to the Google Fonts URL.
-		wp_enqueue_style( 'whs-frame-google-fonts', $url, [ 'whs-frame-main' ], null );
+	$css = '';
+
+	if ( 'inherit' !== $base && isset( $fonts[ $base ] ) ) {
+		$css .= whs_frame_font_face_css( $base );
+	}
+	if ( 'inherit' !== $heading && $heading !== $base && isset( $fonts[ $heading ] ) ) {
+		$css .= whs_frame_font_face_css( $heading );
 	}
 
-	// Build and attach the CSS that wires up the font-family values.
-	$css = '';
 	if ( 'inherit' !== $base ) {
 		$css .= 'body { font-family: ' . whs_frame_font_stack( $base ) . '; }' . "\n";
 	}
 	if ( 'inherit' !== $heading ) {
 		$css .= 'h1, h2, h3, h4, h5, h6 { font-family: ' . whs_frame_font_stack( $heading ) . '; }' . "\n";
 	}
+
 	if ( $css ) {
 		wp_add_inline_style( 'whs-frame-main', $css );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'whs_frame_enqueue_google_fonts', 20 );
-
-// ─── Preconnect hints ─────────────────────────────────────────────────────────
-
-/**
- * Adds preconnect resource hints for the Google Fonts domains.
- * This opens the TCP/TLS connections early, reducing perceived latency
- * for the Google Fonts stylesheet and the actual font files.
- */
-function whs_frame_google_fonts_resource_hints( $hints, $relation_type ) {
-	if ( 'preconnect' !== $relation_type || ! whs_frame_google_fonts_url() ) {
-		return $hints;
-	}
-
-	$hints[] = [ 'href' => 'https://fonts.googleapis.com' ];
-	$hints[] = [ 'href' => 'https://fonts.gstatic.com', 'crossorigin' => 'anonymous' ];
-
-	return $hints;
-}
-add_filter( 'wp_resource_hints', 'whs_frame_google_fonts_resource_hints', 10, 2 );
+add_action( 'wp_enqueue_scripts', 'whs_frame_enqueue_local_fonts', 20 );

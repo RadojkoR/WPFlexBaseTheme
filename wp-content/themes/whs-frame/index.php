@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php
+defined( 'ABSPATH' ) || exit;
+
+get_header();
+?>
 
 <main id="main" class="whs-frame-main">
 	<?php

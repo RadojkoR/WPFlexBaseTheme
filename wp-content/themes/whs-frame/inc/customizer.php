@@ -11,34 +11,15 @@ function whs_frame_sanitize_checkbox( $value ) {
 
 function whs_frame_google_fonts_list() {
 	return [
-		'inherit'            => __( 'Theme Default (System)', 'whs-frame' ),
+		'inherit'           => __( 'Theme Default (System)', 'whs-frame' ),
 		// Sans-serif
-		'Inter'              => 'Inter',
-		'Roboto'             => 'Roboto',
-		'Open Sans'          => 'Open Sans',
-		'Lato'               => 'Lato',
-		'Montserrat'         => 'Montserrat',
-		'Poppins'            => 'Poppins',
-		'Raleway'            => 'Raleway',
-		'Nunito'             => 'Nunito',
-		'Nunito Sans'        => 'Nunito Sans',
-		'DM Sans'            => 'DM Sans',
-		'Figtree'            => 'Figtree',
-		'Mulish'             => 'Mulish',
-		'Josefin Sans'       => 'Josefin Sans',
-		'Source Sans 3'      => 'Source Sans 3',
-		'Ubuntu'             => 'Ubuntu',
-		'Oxygen'             => 'Oxygen',
-		'PT Sans'            => 'PT Sans',
-		'Noto Sans'          => 'Noto Sans',
+		'Inter'             => 'Inter',
+		'Poppins'           => 'Poppins',
+		'Montserrat'        => 'Montserrat',
 		// Serif
-		'Playfair Display'   => 'Playfair Display',
-		'Merriweather'       => 'Merriweather',
-		'Lora'               => 'Lora',
-		'PT Serif'           => 'PT Serif',
-		'Cormorant Garamond' => 'Cormorant Garamond',
-		'Crimson Text'       => 'Crimson Text',
-		'DM Serif Display'   => 'DM Serif Display',
+		'Playfair Display'  => 'Playfair Display',
+		'Merriweather'      => 'Merriweather',
+		'Lora'              => 'Lora',
 	];
 }
 

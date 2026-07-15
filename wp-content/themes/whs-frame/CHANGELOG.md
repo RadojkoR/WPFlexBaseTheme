@@ -5,7 +5,28 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.4.3] - 2026-07-14
+## [1.4.4] - 2026-07-14
+
+### Changed
+- **Google Fonts are now fully self-hosted** — required for WordPress.org
+  submission (loading fonts.googleapis.com/fonts.gstatic.com from the
+  browser has not been allowed since 2022). `inc/fonts.php` rewritten:
+  `whs_frame_local_fonts()` registry + `@font-face` rules generated from
+  local `assets/webfonts/google/*.woff2` files instead of a dynamic Google
+  Fonts CSS2 API URL. No more `wp_resource_hints` preconnect to Google
+  domains — nothing to preconnect to anymore.
+- Font choice list trimmed from 24 to 6 curated families (down from an
+  unmaintainable full-catalog list): **Inter, Poppins, Montserrat** (sans),
+  **Playfair Display, Merriweather, Lora** (serif), plus "Theme Default
+  (System)". Each family ships every weight Google Fonts actually offers
+  for it (Inter/Poppins/Montserrat: 300–900 in 100 steps; Playfair Display:
+  400–900; Merriweather: 300/400/700/900; Lora: 400–700) — 35 `.woff2`
+  files, ~800KB total, verified valid WOFF2 (magic-byte checked).
+
+### Fixed
+- `header.php`, `footer.php` and `index.php` were missing the
+  `defined( 'ABSPATH' ) || exit;` direct-access guard that every other PHP
+  file in the theme has — required by WordPress.org, now added.
 
 ### Added
 - **Sidebar** support — the last remaining field from the Astra reference
