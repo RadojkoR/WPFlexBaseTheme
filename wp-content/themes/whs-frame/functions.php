@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-define( 'WHS_FRAME_VERSION', '1.4.5' );
+define( 'WHS_FRAME_VERSION', '1.4.6' );
 define( 'WHS_FRAME_DIR',     get_template_directory() );
 define( 'WHS_FRAME_URI',     get_template_directory_uri() );
 define( 'WHS_FRAME_INC',     WHS_FRAME_DIR . '/inc/' );
@@ -49,6 +49,9 @@ function whs_frame_setup() {
 
 	// Wide and full alignment support for the block editor.
 	add_theme_support( 'align-wide' );
+
+	// Opinionated core block styles on the front end.
+	add_theme_support( 'wp-block-styles' );
 
 	// Responsive embeds.
 	add_theme_support( 'responsive-embeds' );

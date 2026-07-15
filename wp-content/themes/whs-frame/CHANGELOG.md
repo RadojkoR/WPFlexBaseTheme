@@ -5,6 +5,30 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.6] - 2026-07-15
+
+### Changed — Theme Check pass (official plugin, 0 required / 0 warnings)
+- `screenshot.png` (1.08MB) replaced with `screenshot.jpg` (68KB, JPEG q82,
+  same 1200×900) — Theme Check warned about the 1MB file size.
+- `index.php` blog/archive/search requests now render a proper post list
+  (linked title, date, excerpt) with `the_posts_pagination()` — previously
+  the loop printed bare `the_content()` with no titles, links or paging.
+  Singular requests still render content as-is.
+- `main.css`: styled the WordPress core classes the review guidelines expect
+  (`.screen-reader-text` incl. :focus state, `.sticky`, `.bypostauthor`,
+  `.wp-caption`, `.wp-caption-text`, `.gallery-caption`,
+  `.alignleft`/`.alignright`/`.aligncenter` globally).
+- `add_theme_support( 'wp-block-styles' )` added.
+- `Tested up to` bumped 6.7 → 7.0 (verified against WordPress 7.0.1).
+
+### Verified
+- Official Theme Check plugin run against the theme: **0 required issues,
+  0 warnings** (remaining: 2 "consider block patterns" recommendations that
+  classic themes routinely skip, and 1 informational text-domain note).
+- Full clean-WordPress test with Elementor deactivated: home, single post,
+  category archive, search, 404, RSS feed and page all render (200/301/404
+  as expected) with an empty debug.log under WP_DEBUG.
+
 ## [1.4.5] - 2026-07-14
 
 ### Added

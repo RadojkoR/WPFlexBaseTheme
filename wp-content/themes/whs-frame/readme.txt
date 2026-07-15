@@ -2,9 +2,9 @@
 
 Contributors: webhubstudio
 Requires at least: 6.0
-Tested up to: 6.7
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: full-width-template, custom-menu, custom-logo, editor-style, featured-images, threaded-comments, translation-ready
@@ -49,6 +49,9 @@ Appearance → Widgets → "Blog Sidebar". The sidebar only appears on the front
 The bundled font list (Inter, Poppins, Montserrat, Playfair Display, Merriweather, Lora, plus the system default) covers common sans-serif/serif choices and ships fully self-hosted, with no calls to any external font service. Selecting "Theme Default (System)" uses the visitor's own device fonts.
 
 == Changelog ==
+
+= 1.4.6 =
+* Theme Check pass: compressed screenshot (1.4.6 ships screenshot.jpg at ~68KB instead of a 1MB PNG), added blog archive list with pagination to index.php, styled the WordPress core classes (.screen-reader-text, .sticky, .bypostauthor, .wp-caption, .gallery-caption), added wp-block-styles support, bumped Tested up to 7.0.
 
 = 1.4.5 =
 * Added readme.txt and languages/whs-frame.pot (WordPress.org submission requirements).
