@@ -5,6 +5,31 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-07-14
+
+### Added
+- **Sidebar** support — the last remaining field from the Astra reference
+  panel, deferred from the previous session since it needed a real
+  widget-area system:
+  - New "Blog Sidebar" widget area (`register_sidebar()`, `inc/sidebar.php`)
+    — appears under Appearance → Widgets
+  - Customizer → WHS Frame Theme → Sidebar: site-wide default position
+    (No Sidebar / Left / Right), `whs_frame_sidebar_position`
+  - "Sidebar" field in the WHS Frame Settings editor panel — per-post
+    override (Customizer Setting / Left Sidebar / Right Sidebar / No
+    Sidebar), `_whs_frame_sidebar` post meta
+  - `single.php` wraps the article in `.whs-frame-layout-wrap` and includes
+    `template-parts/sidebar.php` only when a position is selected AND the
+    widget area actually has widgets (`is_active_sidebar()`) — with no
+    sidebar configured, the wrap is a no-op and `.whs-frame-post.container`
+    behaves exactly as before (zero risk to the existing single-column path)
+  - `single.css`: flex two-column layout (300px sidebar, content takes the
+    rest), reversed via `--sidebar-left`, stacks under 900px; basic widget
+    styling (title, list spacing, dividers) since core widgets like Recent
+    Posts/Archives had no styling in this theme before
+  - Scoped to `single.php` only (not the Full Width/Gutenberg page
+    templates) for this pass
+
 ## [1.4.2] - 2026-07-14
 
 ### Fixed

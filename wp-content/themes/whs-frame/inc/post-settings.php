@@ -65,6 +65,19 @@ function whs_frame_register_post_meta() {
 			return current_user_can( 'edit_posts' );
 		},
 	] );
+
+	register_post_meta( '', '_whs_frame_sidebar', [
+		'show_in_rest'      => true,
+		'single'            => true,
+		'type'              => 'string',
+		'default'           => '',
+		'sanitize_callback' => function ( $value ) {
+			return in_array( $value, [ 'none', 'left', 'right' ], true ) ? $value : '';
+		},
+		'auth_callback'     => function () {
+			return current_user_can( 'edit_posts' );
+		},
+	] );
 }
 add_action( 'init', 'whs_frame_register_post_meta' );
 

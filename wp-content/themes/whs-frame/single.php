@@ -11,9 +11,18 @@ while ( have_posts() ) :
 	$whs_frame_word_count    = str_word_count( wp_strip_all_tags( get_the_content() ) );
 	$whs_frame_reading_time  = max( 1, (int) ceil( $whs_frame_word_count / 200 ) );
 	$whs_frame_author_bio    = get_the_author_meta( 'description' );
+
+	$whs_frame_sidebar_position = whs_frame_get_sidebar_position();
+	$whs_frame_has_sidebar      = 'none' !== $whs_frame_sidebar_position && is_active_sidebar( 'whs-frame-blog-sidebar' );
+	$whs_frame_wrap_classes     = [ 'whs-frame-layout-wrap' ];
+	if ( $whs_frame_has_sidebar ) {
+		$whs_frame_wrap_classes[] = 'whs-frame-layout-wrap--has-sidebar';
+		$whs_frame_wrap_classes[] = 'whs-frame-layout-wrap--sidebar-' . $whs_frame_sidebar_position;
+	}
 	?>
 
 	<main id="main" class="whs-frame-main whs-frame-single">
+		<div class="<?php echo esc_attr( implode( ' ', $whs_frame_wrap_classes ) ); ?>">
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'whs-frame-post container' ); ?>>
 
 			<header class="whs-frame-post__header">
@@ -129,6 +138,11 @@ while ( have_posts() ) :
 			?>
 
 		</article>
+
+		<?php if ( $whs_frame_has_sidebar ) : ?>
+			<?php get_template_part( 'template-parts/sidebar' ); ?>
+		<?php endif; ?>
+		</div>
 	</main>
 
 	<?php

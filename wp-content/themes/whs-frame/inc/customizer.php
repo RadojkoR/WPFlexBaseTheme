@@ -188,6 +188,34 @@ function whs_frame_main_customizer( $wp_customize ) {
 	// 3. FOOTER — logo only (all other settings moved to admin panel)
 	// ─────────────────────────────────────────────────────────────────────────
 
+	// ─────────────────────────────────────────────────────────────────────────
+	// 2b. SIDEBAR
+	// ─────────────────────────────────────────────────────────────────────────
+
+	$wp_customize->add_section( 'whs_frame_main_sidebar', [
+		'title'    => __( 'Sidebar', 'whs-frame' ),
+		'panel'    => $panel,
+		'priority' => 25,
+	] );
+
+	$wp_customize->add_setting( 'whs_frame_sidebar_position', [
+		'default'           => 'none',
+		'sanitize_callback' => function ( $value ) {
+			return in_array( $value, [ 'none', 'left', 'right' ], true ) ? $value : 'none';
+		},
+	] );
+	$wp_customize->add_control( 'whs_frame_sidebar_position', [
+		'label'       => __( 'Sidebar Position', 'whs-frame' ),
+		'description' => __( 'Applies to single posts and pages. Only shows if the Blog Sidebar widget area has widgets (Appearance → Widgets). Can be overridden per post/page.', 'whs-frame' ),
+		'section'     => 'whs_frame_main_sidebar',
+		'type'        => 'select',
+		'choices'     => [
+			'none'  => __( 'No Sidebar', 'whs-frame' ),
+			'left'  => __( 'Left Sidebar', 'whs-frame' ),
+			'right' => __( 'Right Sidebar', 'whs-frame' ),
+		],
+	] );
+
 	$wp_customize->add_section( 'whs_frame_main_footer', [
 		'title'    => __( 'Footer', 'whs-frame' ),
 		'panel'    => $panel,

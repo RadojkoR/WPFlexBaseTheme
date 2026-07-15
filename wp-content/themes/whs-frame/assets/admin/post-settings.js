@@ -44,6 +44,19 @@
 			},
 			h( 'div', { className: 'whs-frame-doc-panel__group' },
 				h( SelectControl, {
+					label: __( 'Sidebar', 'whs-frame' ),
+					value: meta._whs_frame_sidebar || '',
+					options: [
+						{ label: __( 'Customizer Setting', 'whs-frame' ), value: '' },
+						{ label: __( 'Left Sidebar', 'whs-frame' ), value: 'left' },
+						{ label: __( 'Right Sidebar', 'whs-frame' ), value: 'right' },
+						{ label: __( 'No Sidebar', 'whs-frame' ), value: 'none' },
+					],
+					onChange: function ( v ) { setMeta( '_whs_frame_sidebar', v ); },
+				} )
+			),
+			h( 'div', { className: 'whs-frame-doc-panel__group' },
+				h( SelectControl, {
 					label: __( 'Content Layout', 'whs-frame' ),
 					value: meta._whs_frame_content_layout || '',
 					options: [

@@ -8,6 +8,86 @@
 	padding-bottom: 3rem;
 }
 
+/* ── Sidebar layout ───────────────────────────────────────────────────────── */
+/* Only active when a sidebar is selected (Customizer or per-post override)
+   AND the Blog Sidebar widget area actually has widgets. Without a sidebar,
+   .whs-frame-layout-wrap has no effect and .whs-frame-post.container behaves
+   exactly as it always has (own max-width from the Content Layout system). */
+.whs-frame-layout-wrap--has-sidebar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 3rem;
+	max-width: var(--whs-frame-container-width, 1200px);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.whs-frame-layout-wrap--has-sidebar .whs-frame-post.container {
+	flex: 1 1 0%;
+	min-width: 0;
+	max-width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.whs-frame-layout-wrap--has-sidebar .whs-frame-sidebar {
+	flex: 0 0 300px;
+	padding-top: 10rem;
+}
+
+.whs-frame-layout-wrap--sidebar-left {
+	flex-direction: row-reverse;
+}
+
+.whs-frame-sidebar__widget {
+	margin-bottom: 2rem;
+	padding-bottom: 2rem;
+	border-bottom: 1px solid color-mix(in srgb, var(--whs-frame-color-text, #1e1e2e) 10%, transparent);
+}
+
+.whs-frame-sidebar__widget:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.whs-frame-sidebar__widget-title {
+	margin-bottom: 1rem;
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+.whs-frame-sidebar__widget ul {
+	list-style: none;
+}
+
+.whs-frame-sidebar__widget li {
+	margin-bottom: 0.6rem;
+	line-height: 1.5;
+}
+
+.whs-frame-sidebar__widget a {
+	color: inherit;
+}
+
+.whs-frame-sidebar__widget a:hover {
+	color: var(--whs-frame-color-primary, #6366f1);
+}
+
+@media (max-width: 900px) {
+	.whs-frame-layout-wrap--has-sidebar {
+		flex-direction: column;
+	}
+
+	.whs-frame-layout-wrap--has-sidebar .whs-frame-sidebar {
+		flex-basis: 100%;
+		padding-top: 0;
+	}
+}
+
 /* ── Content Layout overrides (per-post, via WHS Frame Settings panel) ──────
    Default (no body class) = the normal .container + 76ch content behavior
    already in place below. */
