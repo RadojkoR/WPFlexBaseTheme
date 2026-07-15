@@ -5,7 +5,18 @@ All notable changes to the WHS Frame WordPress Theme will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.4.4] - 2026-07-14
+## [1.4.5] - 2026-07-14
+
+### Added
+- `readme.txt` — WordPress.org-format readme (header, description, FAQ,
+  condensed changelog, and copyright section declaring bundled third-party
+  resources: Font Awesome Free 6.6.0 icons/fonts/code and the 6 self-hosted
+  Google Fonts families, each with their actual license).
+- `languages/whs-frame.pot` — 88 translatable strings extracted from every
+  `.php` and `.js` file in the theme (no WP-CLI available in this
+  environment, so extraction was done with a small PHP script mirroring
+  `wp i18n make-pot`'s regex approach; verified by round-tripping the file
+  through WordPress core's own `PO` parser class).
 
 ### Changed
 - **Google Fonts are now fully self-hosted** — required for WordPress.org

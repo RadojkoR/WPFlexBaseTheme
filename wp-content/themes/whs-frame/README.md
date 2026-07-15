@@ -110,8 +110,7 @@ Click any preset card to instantly apply all colors and settings.
 Some theme options are also available in **Appearance → Customize**:
 - Top Bar enable/hide/dismiss/column types
 - Header sticky/transparent/logo settings
-- Elementor template selection
-- Font selection (typography)
+- Sidebar position (Left/Right/No Sidebar)
 - Footer logo
 
 ## Compatibility
@@ -148,10 +147,12 @@ Some theme options are also available in **Appearance → Customize**:
 
 ## Credits
 
-**Font Awesome 6** — Comprehensive icon library by FontAwesome  
+**Font Awesome 6.6.0** — Comprehensive icon library by FontAwesome, self-hosted (no CDN)
+Icons: CC BY 4.0 · Fonts: SIL OFL 1.1 · Code: MIT
 [https://fontawesome.com](https://fontawesome.com)
 
-**Google Fonts** — Free, open-source fonts by Google  
+**Google Fonts** — Inter, Poppins, Montserrat, Playfair Display, Merriweather, Lora — self-hosted, no external requests
+License: SIL Open Font License 1.1
 [https://fonts.google.com](https://fonts.google.com)
 
 ## License
@@ -166,6 +167,6 @@ For full license details, see: [https://www.gnu.org/licenses/gpl-2.0.html](https
 
 ---
 
-**Theme Version:** 1.0.8  
-**Last Updated:** 2026-05-04  
-**Author:** WHS Frame Theme Team
+**Theme Version:** 1.4.4  
+**Last Updated:** 2026-07-14  
+**Author:** Web Hub Studio
